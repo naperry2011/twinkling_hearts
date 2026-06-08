@@ -1,0 +1,114 @@
+---
+import Brandmark from './Brandmark.astro';
+import Icon from './Icon.astro';
+import { site, navLinks } from '@/config/site';
+
+const path = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === '/' ? path === '/' : path.startsWith(href);
+---
+<header class="sticky top-0 z-40 border-b border-sage-100 bg-cream/85 backdrop-blur-md">
+  <div class="container-prose flex items-center justify-between gap-4 py-3">
+    <a href="/" class="rounded-lg" aria-label={`${site.name} — home`}>
+      <Brandmark />
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="hidden items-center gap-1 lg:flex" aria-label="Primary">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          aria-current={isActive(link.href) ? 'page' : undefined}
+          class:list={[
+            'rounded-lg px-3 py-2 text-[0.95rem] font-semibold transition-colors',
+            isActive(link.href)
+              ? 'text-sage-900'
+              : 'text-ink-soft hover:text-sage-800',
+          ]}
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="hidden items-center gap-3 lg:flex">
+      <a
+        href={site.phoneHref}
+        class="inline-flex items-center gap-2 font-semibold text-teal-700 hover:text-teal-600"
+      >
+        <Icon name="phone" size={18} />
+        <span>{site.phone}</span>
+      </a>
+      <a
+        href="/contact"
+        class="inline-flex min-h-[44px] items-center rounded-xl bg-gold-500 px-5 py-2.5 font-semibold text-ink shadow-soft transition-all hover:-translate-y-0.5 hover:bg-gold-400 hover:shadow-lift"
+      >
+        Free Assessment
+      </a>
+    </div>
+
+    <!-- Mobile toggle -->
+    <button
+      type="button"
+      id="menu-toggle"
+      class="inline-flex h-11 w-11 items-center justify-center rounded-lg text-sage-900 hover:bg-sage-100 lg:hidden"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      aria-label="Open menu"
+    >
+      <Icon name="menu" size={28} class="block" />
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    hidden
+    class="border-t border-sage-100 bg-cream lg:hidden"
+  >
+    <nav class="container-prose flex flex-col gap-1 py-4" aria-label="Mobile">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          aria-current={isActive(link.href) ? 'page' : undefined}
+          class:list={[
+            'rounded-lg px-3 py-3 text-lg font-semibold',
+            isActive(link.href)
+              ? 'bg-sage-100 text-sage-900'
+              : 'text-ink-soft hover:bg-sage-50',
+          ]}
+        >
+          {link.label}
+        </a>
+      ))}
+      <div class="mt-2 flex flex-col gap-3 border-t border-sage-100 pt-4">
+        <a
+          href={site.phoneHref}
+          class="inline-flex items-center gap-2 px-3 text-lg font-semibold text-teal-700"
+        >
+          <Icon name="phone" size={20} />
+          {site.phone}
+        </a>
+        <a
+          href="/contact"
+          class="inline-flex min-h-[52px] items-center justify-center rounded-xl bg-gold-500 px-5 font-semibold text-ink shadow-soft"
+        >
+          Request a Free Assessment
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!open));
+      toggle.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
+      menu.hidden = open;
+    });
+  }
+</script>

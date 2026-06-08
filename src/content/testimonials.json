@@ -1,0 +1,29 @@
+[
+  {
+    "id": "t1",
+    "order": 1,
+    "placeholder": true,
+    "quote": "The caregiver from Twinkling Hearts treated my mother like her own family. For the first time in months, I could sleep at night knowing she was safe and truly cared for.",
+    "author": "Sample Review",
+    "relation": "Daughter of a client",
+    "location": "Your City"
+  },
+  {
+    "id": "t2",
+    "order": 2,
+    "placeholder": true,
+    "quote": "They didn't just help my dad — they brought light back into his day. Compassion really is at the heart of what they do.",
+    "author": "Sample Review",
+    "relation": "Son of a client",
+    "location": "Your City"
+  },
+  {
+    "id": "t3",
+    "order": 3,
+    "placeholder": true,
+    "quote": "As a caregiver myself, respite care gave me the rest I desperately needed. I came back stronger, and I never worried for a moment while I was away.",
+    "author": "Sample Review",
+    "relation": "Family caregiver",
+    "location": "Your City"
+  }
+]

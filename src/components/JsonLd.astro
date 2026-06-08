@@ -1,0 +1,12 @@
+---
+/** Renders a JSON-LD <script> from a structured-data object. */
+interface Props {
+  data: Record<string, unknown> | Record<string, unknown>[];
+}
+const { data } = Astro.props;
+---
+<script
+  type="application/ld+json"
+  is:inline
+  set:html={JSON.stringify(data)}
+/>

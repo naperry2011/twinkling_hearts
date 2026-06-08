@@ -1,0 +1,72 @@
+[
+  {
+    "id": "what-is-non-medical-care",
+    "category": "Getting Started",
+    "order": 1,
+    "question": "What is non-medical in-home care?",
+    "answer": "Non-medical in-home care helps seniors with everyday living — bathing, dressing, meals, light housekeeping, companionship, medication reminders, and getting around safely. Our caregivers do not provide skilled medical or nursing services; instead, they offer the dependable, compassionate day-to-day support that helps your loved one stay safe and independent at home."
+  },
+  {
+    "id": "how-do-we-start",
+    "category": "Getting Started",
+    "order": 2,
+    "question": "How do we get started?",
+    "answer": "It begins with a simple phone call. We will listen to your situation, answer your questions, and schedule a free in-home assessment at no cost or obligation. From there we create a personalized care plan, match a caregiver to your loved one, and care can often begin within days."
+  },
+  {
+    "id": "free-assessment",
+    "category": "Getting Started",
+    "order": 3,
+    "question": "Is the in-home assessment really free?",
+    "answer": "Yes. The assessment is completely free and carries no obligation. It is simply a conversation in the home so we can understand your loved one's needs, preferences, and routines, and recommend the right level of care for your family."
+  },
+  {
+    "id": "are-caregivers-screened",
+    "category": "Caregivers & Safety",
+    "order": 4,
+    "question": "Are your caregivers background-checked?",
+    "answer": "Absolutely. Every caregiver is carefully screened, background-checked, and selected for both skill and heart. We hire people we would trust with our own families, and we provide ongoing training so the care your loved one receives is always dependable and kind."
+  },
+  {
+    "id": "insured-bonded",
+    "category": "Caregivers & Safety",
+    "order": 5,
+    "question": "Are you insured and bonded?",
+    "answer": "Yes. Twinkling Hearts In Home Care is insured and bonded for your family's protection and peace of mind. We are happy to discuss our credentials and licensing with you during your free assessment."
+  },
+  {
+    "id": "same-caregiver",
+    "category": "Caregivers & Safety",
+    "order": 6,
+    "question": "Will my loved one have the same caregiver each time?",
+    "answer": "Whenever possible, yes. Consistency builds trust and comfort, so we work hard to match your loved one with a caregiver who fits their personality and needs — and to keep that relationship steady. If a caregiver is ever unavailable, we ensure a familiar, qualified backup steps in."
+  },
+  {
+    "id": "what-hours",
+    "category": "Services & Scheduling",
+    "order": 7,
+    "question": "What hours and schedules do you offer?",
+    "answer": "We offer flexible scheduling to fit your family — from a few hours a week to daily visits, overnight care, and around-the-clock support. As needs change, your care plan can change with them. Just let us know what works, and we will build a schedule around it."
+  },
+  {
+    "id": "can-we-change-plan",
+    "category": "Services & Scheduling",
+    "order": 8,
+    "question": "Can we change or cancel services if our needs change?",
+    "answer": "Of course. Care needs evolve, and your plan is never set in stone. You can adjust hours, services, or scheduling as life changes. We will always work with you to make sure the care fits where your family is right now."
+  },
+  {
+    "id": "how-much-does-it-cost",
+    "category": "Cost & Payment",
+    "order": 9,
+    "question": "How much does in-home care cost?",
+    "answer": "Cost depends on the type of care and number of hours your loved one needs, so we provide a clear, personalized quote after the free assessment — with no surprises. We will always be transparent about pricing and help you find a plan that fits your family's budget."
+  },
+  {
+    "id": "payment-options",
+    "category": "Cost & Payment",
+    "order": 10,
+    "question": "What payment options do you accept?",
+    "answer": "Many families pay privately or through long-term care insurance. Depending on your state and situation, Medicaid waiver programs or veterans' benefits may also help cover in-home care. We are glad to talk through your options during the assessment and point you toward resources that may apply."
+  }
+]

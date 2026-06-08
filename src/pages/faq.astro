@@ -1,0 +1,48 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '@/layouts/PageLayout.astro';
+import FaqAccordion from '@/components/FaqAccordion.astro';
+import CTABand from '@/components/CTABand.astro';
+import { faqSchema } from '@/lib/schema';
+
+const faqs = (await getCollection('faqs')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+const categories = [
+  'Getting Started',
+  'Caregivers & Safety',
+  'Services & Scheduling',
+  'Cost & Payment',
+] as const;
+
+const grouped = categories
+  .map((cat) => ({
+    category: cat,
+    items: faqs.filter((f) => f.data.category === cat),
+  }))
+  .filter((g) => g.items.length > 0);
+
+const allQA = faqs.map((f) => ({ question: f.data.question, answer: f.data.answer }));
+---
+<PageLayout
+  title="Frequently Asked Questions"
+  description="Answers to common questions about in-home senior care — getting started, caregiver screening, scheduling, costs, and payment options like insurance and Medicaid waivers."
+  eyebrow="We’re Here to Help"
+  heading="Frequently asked questions"
+  intro="Choosing in-home care brings a lot of questions. Here are honest answers to the ones families ask us most. Don’t see yours? We’d love to talk."
+  crumbs={[{ name: 'FAQ', href: '/faq' }]}
+  jsonLd={[faqSchema(allQA)]}
+>
+  <section class="container-prose py-14 md:py-20">
+    <div class="space-y-12">
+      {grouped.map((group) => (
+        <div>
+          <h2 class="mb-5 text-2xl text-sage-900">{group.category}</h2>
+          <FaqAccordion items={group.items.map((i) => ({ question: i.data.question, answer: i.data.answer }))} />
+        </div>
+      ))}
+    </div>
+  </section>
+  <CTABand title="Still have questions?" text="We’re always happy to talk it through. Reach out for a free, no-pressure conversation." />
+</PageLayout>

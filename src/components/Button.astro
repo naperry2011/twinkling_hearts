@@ -1,0 +1,47 @@
+---
+import Icon from './Icon.astro';
+import type { IconName } from '@/lib/icons';
+
+interface Props {
+  href: string;
+  variant?: 'primary' | 'gold' | 'outline' | 'ghost';
+  size?: 'md' | 'lg';
+  icon?: IconName;
+  iconRight?: boolean;
+  class?: string;
+}
+const {
+  href,
+  variant = 'primary',
+  size = 'md',
+  icon,
+  iconRight = false,
+  class: className = '',
+} = Astro.props;
+
+const base =
+  'inline-flex items-center justify-center gap-2 rounded-xl font-semibold tracking-tight transition-all duration-200 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-teal-500';
+const sizes = {
+  md: 'px-6 py-3 text-base min-h-[48px]',
+  lg: 'px-7 py-4 text-lg min-h-[56px]',
+};
+const variants = {
+  primary:
+    'bg-sage-700 text-cream shadow-soft hover:bg-sage-800 hover:shadow-lift hover:-translate-y-0.5',
+  gold:
+    'bg-gold-500 text-ink shadow-soft hover:bg-gold-400 hover:shadow-lift hover:-translate-y-0.5',
+  outline:
+    'border-2 border-sage-600 text-sage-800 hover:bg-sage-600 hover:text-cream',
+  ghost: 'text-teal-700 hover:text-teal-600 underline-offset-4 hover:underline',
+};
+const isExternal = href.startsWith('http');
+---
+<a
+  href={href}
+  class:list={[base, sizes[size], variants[variant], className]}
+  {...isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {}}
+>
+  {icon && !iconRight && <Icon name={icon} size={20} />}
+  <span><slot /></span>
+  {icon && iconRight && <Icon name={icon} size={20} />}
+</a>

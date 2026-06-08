@@ -1,0 +1,127 @@
+---
+import { getCollection } from 'astro:content';
+import Icon from '@/components/Icon.astro';
+import { site } from '@/config/site';
+
+const services = (await getCollection('services')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+const field =
+  'w-full rounded-xl border border-sage-200 bg-white px-4 py-3 text-ink placeholder:text-taupe-400 focus-visible:outline-3 focus-visible:outline-offset-0 focus-visible:outline-teal-500';
+const label = 'block text-sm font-semibold text-sage-900';
+---
+<form
+  id="lead-form"
+  action="https://api.web3forms.com/submit"
+  method="POST"
+  class="space-y-5 rounded-3xl border border-sage-100 bg-white p-6 shadow-soft sm:p-8"
+>
+  <input type="hidden" name="access_key" value={site.web3formsKey} />
+  <input type="hidden" name="subject" value="New care inquiry from twinklingheart.org" />
+  <input type="hidden" name="from_name" value={site.name} />
+  <!-- honeypot: real people leave this empty -->
+  <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+
+  <div class="grid gap-5 sm:grid-cols-2">
+    <div>
+      <label class={label} for="name">Your name <span class="text-teal-700">*</span></label>
+      <input class={`mt-1.5 ${field}`} id="name" name="name" type="text" required autocomplete="name" />
+    </div>
+    <div>
+      <label class={label} for="phone">Phone <span class="text-teal-700">*</span></label>
+      <input class={`mt-1.5 ${field}`} id="phone" name="phone" type="tel" inputmode="tel" required autocomplete="tel" />
+    </div>
+  </div>
+
+  <div class="grid gap-5 sm:grid-cols-2">
+    <div>
+      <label class={label} for="email">Email</label>
+      <input class={`mt-1.5 ${field}`} id="email" name="email" type="email" inputmode="email" autocomplete="email" />
+    </div>
+    <div>
+      <label class={label} for="city">City / town</label>
+      <input class={`mt-1.5 ${field}`} id="city" name="city" type="text" />
+    </div>
+  </div>
+
+  <div class="grid gap-5 sm:grid-cols-2">
+    <div>
+      <label class={label} for="relationship">Who needs care?</label>
+      <select class={`mt-1.5 ${field}`} id="relationship" name="who_needs_care">
+        <option value="">Please choose…</option>
+        <option>My parent</option>
+        <option>My spouse</option>
+        <option>Myself</option>
+        <option>Another loved one</option>
+      </select>
+    </div>
+    <div>
+      <label class={label} for="service">Care you're interested in</label>
+      <select class={`mt-1.5 ${field}`} id="service" name="service_interest">
+        <option value="">Not sure yet</option>
+        {services.map((s) => <option>{s.data.shortTitle ?? s.data.title}</option>)}
+        <option>A combination / other</option>
+      </select>
+    </div>
+  </div>
+
+  <div>
+    <label class={label} for="contact_time">Best time to reach you</label>
+    <input class={`mt-1.5 ${field}`} id="contact_time" name="preferred_contact_time" type="text" placeholder="e.g. weekday mornings" />
+  </div>
+
+  <div>
+    <label class={label} for="message">How can we help?</label>
+    <textarea class={`mt-1.5 ${field}`} id="message" name="message" rows="4" placeholder="Tell us a little about your situation…"></textarea>
+  </div>
+
+  <label class="flex items-start gap-3 text-sm text-ink-soft">
+    <input type="checkbox" name="consent" required class="mt-1 h-5 w-5 rounded border-sage-300 text-sage-700 focus-visible:outline-3 focus-visible:outline-teal-500" />
+    <span>I agree to be contacted about my inquiry. See our <a href="/privacy" class="font-semibold text-teal-700">Privacy Policy</a>.</span>
+  </label>
+
+  <button
+    type="submit"
+    id="lead-submit"
+    class="inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-gold-500 px-6 font-semibold text-ink shadow-soft transition-all hover:-translate-y-0.5 hover:bg-gold-400 hover:shadow-lift focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
+  >
+    <Icon name="heart" size={20} /> Request My Free Assessment
+  </button>
+
+  <p id="form-status" role="status" aria-live="polite" class="hidden text-center text-base font-semibold"></p>
+</form>
+
+<script>
+  const form = document.getElementById('lead-form') as HTMLFormElement | null;
+  const status = document.getElementById('form-status');
+  const submit = document.getElementById('lead-submit') as HTMLButtonElement | null;
+  if (form && status && submit) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.className = 'text-center text-base font-semibold text-sage-800';
+      status.textContent = 'Sending…';
+      submit.disabled = true;
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' },
+        });
+        const data = await res.json();
+        if (res.ok && data.success) {
+          form.reset();
+          status.className = 'rounded-xl bg-sage-50 p-4 text-center text-base font-semibold text-sage-900';
+          status.textContent = 'Thank you — your message is on its way. We’ll be in touch within one business day.';
+        } else {
+          throw new Error(data.message || 'Submission failed');
+        }
+      } catch {
+        status.className = 'rounded-xl bg-gold-200/50 p-4 text-center text-base font-semibold text-ink';
+        status.innerHTML = 'Something went wrong. Please call us directly — we’re glad to help.';
+      } finally {
+        submit.disabled = false;
+      }
+    });
+  }
+</script>

@@ -1,0 +1,109 @@
+---
+import Brandmark from './Brandmark.astro';
+import Icon from './Icon.astro';
+import { site, navLinks, socialLinks } from '@/config/site';
+import { getCollection } from 'astro:content';
+
+const services = (await getCollection('services')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+const year = new Date().getFullYear();
+const cityLine = [site.address.city, site.address.region]
+  .filter(Boolean)
+  .join(', ');
+---
+<footer class="mt-auto border-t border-sage-200 bg-sage-900 text-sage-100">
+  <div class="container-prose grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
+    <!-- Brand + NAP -->
+    <div class="lg:col-span-1">
+      <Brandmark class="[&_*]:text-cream [&_span]:text-cream" />
+      <p class="mt-4 max-w-xs text-sm leading-relaxed text-sage-200">
+        {site.miniTagline}
+      </p>
+      <ul class="mt-5 space-y-2 text-sm">
+        <li>
+          <a href={site.phoneHref} class="inline-flex items-center gap-2 text-sage-100 hover:text-gold-300">
+            <Icon name="phone" size={16} /> {site.phone}
+          </a>
+        </li>
+        <li>
+          <a href={`mailto:${site.email}`} class="inline-flex items-center gap-2 text-sage-100 hover:text-gold-300">
+            <Icon name="mail" size={16} /> {site.email}
+          </a>
+        </li>
+        {cityLine && (
+          <li class="inline-flex items-center gap-2 text-sage-200">
+            <Icon name="pin" size={16} /> {cityLine}
+          </li>
+        )}
+        <li class="inline-flex items-center gap-2 text-sage-200">
+          <Icon name="clock" size={16} /> {site.hours.display}
+        </li>
+      </ul>
+    </div>
+
+    <!-- Explore -->
+    <nav aria-label="Footer">
+      <h2 class="font-display text-lg text-cream">Explore</h2>
+      <ul class="mt-4 space-y-2 text-sm">
+        {navLinks.map((link) => (
+          <li>
+            <a href={link.href} class="text-sage-200 hover:text-gold-300">{link.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <!-- Services -->
+    <nav aria-label="Services">
+      <h2 class="font-display text-lg text-cream">Our Care</h2>
+      <ul class="mt-4 space-y-2 text-sm">
+        {services.map((s) => (
+          <li>
+            <a href={`/services/${s.id}`} class="text-sage-200 hover:text-gold-300">
+              {s.data.shortTitle ?? s.data.title}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <!-- CTA + social -->
+    <div>
+      <h2 class="font-display text-lg text-cream">Let's Talk</h2>
+      <p class="mt-4 text-sm text-sage-200">
+        Your first conversation is always free, with no obligation.
+      </p>
+      <a
+        href="/contact"
+        class="mt-4 inline-flex min-h-[48px] items-center justify-center rounded-xl bg-gold-500 px-5 font-semibold text-ink transition-colors hover:bg-gold-400"
+      >
+        Request a Free Assessment
+      </a>
+      <div class="mt-6 flex items-center gap-3">
+        {socialLinks.map((s) => (
+          <a
+            href={s.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={s.label}
+            class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-sage-700 text-sage-100 transition-colors hover:border-gold-400 hover:text-gold-300"
+          >
+            <Icon name={s.key} size={18} />
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div class="border-t border-sage-800">
+    <div class="container-prose flex flex-col gap-2 py-5 text-xs text-sage-300 sm:flex-row sm:items-center sm:justify-between">
+      <p>© {year} {site.legalName}. All rights reserved.{site.license ? ` · ${site.license}` : ''}</p>
+      <div class="flex gap-4">
+        <a href="/privacy" class="hover:text-gold-300">Privacy</a>
+        <a href="/accessibility" class="hover:text-gold-300">Accessibility</a>
+        <span>Insured &amp; Bonded</span>
+      </div>
+    </div>
+  </div>
+</footer>

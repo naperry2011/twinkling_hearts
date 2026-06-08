@@ -1,0 +1,17 @@
+---
+import { site } from '@/config/site';
+interface Props {
+  title?: string;
+  class?: string;
+}
+const { title = `Map of ${site.serviceArea}`, class: className = '' } = Astro.props;
+---
+<div class:list={['overflow-hidden rounded-3xl border border-sage-100 shadow-soft', className]}>
+  <iframe
+    src={site.mapEmbedSrc}
+    title={title}
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    class="h-full min-h-[280px] w-full border-0"
+  ></iframe>
+</div>

@@ -1,0 +1,23 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Button from '@/components/Button.astro';
+import Icon from '@/components/Icon.astro';
+---
+<BaseLayout
+  title="Page Not Found"
+  description="The page you're looking for couldn't be found."
+  noindex
+>
+  <section class="container-prose flex flex-col items-center py-24 text-center md:py-32">
+    <Icon name="sparkle" size={56} class="twinkle text-gold-400" />
+    <h1 class="mt-6 text-4xl sm:text-5xl">We couldn’t find that page</h1>
+    <p class="mt-4 max-w-md text-lg text-ink-soft">
+      The page may have moved, or the link may be incomplete. Let’s get you back
+      to a place we can help.
+    </p>
+    <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+      <Button href="/" variant="primary" icon="home">Return home</Button>
+      <Button href="/contact" variant="outline" icon="heart">Contact us</Button>
+    </div>
+  </section>
+</BaseLayout>

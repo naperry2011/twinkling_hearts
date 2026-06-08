@@ -1,0 +1,55 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import { site } from '@/config/site';
+---
+<PageLayout
+  title="Privacy Policy"
+  description="How Twinkling Hearts In Home Care collects, uses, and protects the information you share with us."
+  eyebrow="Your Privacy Matters"
+  heading="Privacy Policy"
+  crumbs={[{ name: 'Privacy', href: '/privacy' }]}
+>
+  <section class="container-prose py-14 md:py-20">
+    <div class="mx-auto max-w-3xl space-y-6 text-lg leading-relaxed text-ink-soft [&_h2]:mt-8 [&_h2]:text-2xl [&_h2]:text-sage-900">
+      <p>
+        Twinkling Hearts In Home Care (“we,” “us”) respects your privacy. This
+        policy explains what information we collect through this website and how
+        we use it.
+      </p>
+      <h2>Information we collect</h2>
+      <p>
+        When you submit our contact form, we collect the details you provide —
+        such as your name, phone number, email, and the message you send — so we
+        can respond to your inquiry. We do not collect medical or health
+        information through this website.
+      </p>
+      <h2>How we use your information</h2>
+      <p>
+        We use the information you share solely to respond to your inquiry,
+        provide information about our services, and follow up about care. We do
+        not sell or rent your information to third parties.
+      </p>
+      <h2>How we protect it</h2>
+      <p>
+        Form submissions are transmitted securely to our inbox. We retain
+        inquiries only as long as needed to assist you and comply with our
+        records obligations.
+      </p>
+      <h2>Cookies & analytics</h2>
+      <p>
+        This site does not use advertising cookies. If we add basic, privacy-
+        respecting analytics in the future, we will update this policy.
+      </p>
+      <h2>Contact us</h2>
+      <p>
+        Questions about this policy? Email
+        <a class="font-semibold text-teal-700" href={`mailto:${site.email}`}>{site.email}</a>
+        or call <a class="font-semibold text-teal-700" href={site.phoneHref}>{site.phone}</a>.
+      </p>
+      <p class="text-sm text-taupe-600">
+        This page is provided for general information and is not legal advice.
+        Please review with your attorney before launch.
+      </p>
+    </div>
+  </section>
+</PageLayout>

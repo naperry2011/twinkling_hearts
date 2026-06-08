@@ -1,0 +1,167 @@
+/* Self-hosted variable fonts (preloaded weights configured in BaseLayout) */
+@import '@fontsource-variable/fraunces';
+@import '@fontsource-variable/source-sans-3';
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------ */
+/* Design tokens — keyed to the Twinkling Hearts logo                 */
+/* ------------------------------------------------------------------ */
+@theme {
+  /* Sage — calm primary */
+  --color-sage-50: #f4f7f1;
+  --color-sage-100: #e6ede0;
+  --color-sage-200: #d2dec8;
+  --color-sage-300: #b9ccab;
+  --color-sage-400: #a0b890;
+  --color-sage-500: #8aa67e; /* brand */
+  --color-sage-600: #6f8c64;
+  --color-sage-700: #5f7a55;
+  --color-sage-800: #4a6042;
+  --color-sage-900: #3c4f35;
+
+  /* Teal — accent + interactive */
+  --color-teal-300: #7fcdd9;
+  --color-teal-400: #4cb3c2;
+  --color-teal-500: #2f97a8; /* accent */
+  --color-teal-600: #267e8d;
+  --color-teal-700: #1f6b78;
+
+  /* Gold — warm twinkle (large text / icons / accents ONLY) */
+  --color-gold-200: #f0dca8;
+  --color-gold-300: #e3c878;
+  --color-gold-400: #d6b35f;
+  --color-gold-500: #c9a24a; /* brand */
+  --color-gold-600: #b08c38;
+  --color-gold-700: #a07d2e;
+
+  /* Taupe — soft secondary text */
+  --color-taupe-300: #cdbcae;
+  --color-taupe-400: #b59e8e;
+  --color-taupe-600: #8c7361;
+  --color-taupe-700: #735c4c;
+
+  /* Neutrals */
+  --color-cream: #fbf8f1;
+  --color-cream-deep: #f4eee0;
+  --color-ink: #2c2a26;
+  --color-ink-soft: #4b4842;
+
+  /* Typography */
+  --font-display: 'Fraunces Variable', 'Fraunces', ui-serif, Georgia, serif;
+  --font-body: 'Source Sans 3 Variable', 'Source Sans 3', ui-sans-serif, system-ui, sans-serif;
+
+  /* Radii */
+  --radius-xl: 0.875rem;
+  --radius-2xl: 1.25rem;
+  --radius-3xl: 1.75rem;
+
+  /* Soft, warm shadows */
+  --shadow-soft: 0 1px 2px rgba(60, 79, 53, 0.04), 0 8px 24px rgba(60, 79, 53, 0.08);
+  --shadow-lift: 0 2px 4px rgba(60, 79, 53, 0.06), 0 16px 40px rgba(60, 79, 53, 0.12);
+}
+
+/* ------------------------------------------------------------------ */
+/* Base — accessible defaults for a senior / family audience          */
+/* ------------------------------------------------------------------ */
+@layer base {
+  :root {
+    color-scheme: light;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem; /* offset for sticky header on anchor jumps */
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: 1.125rem; /* 18px base */
+    line-height: 1.65;
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    color: var(--color-sage-900);
+    line-height: 1.12;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  p { text-wrap: pretty; }
+
+  a { color: var(--color-teal-700); }
+
+  /* Visible, high-contrast focus for keyboard users everywhere */
+  :focus-visible {
+    outline: 3px solid var(--color-teal-500);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: var(--color-gold-200);
+    color: var(--color-ink);
+  }
+
+  /* Respect reduced-motion: disable decorative + scroll animation */
+  @media (prefers-reduced-motion: reduce) {
+    :root { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Reusable component utilities                                       */
+/* ------------------------------------------------------------------ */
+@layer components {
+  .container-prose {
+    width: 100%;
+    max-width: 72rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .container-prose { padding-inline: 2rem; }
+  }
+
+  /* Small uppercase eyebrow above section headings */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-teal-700);
+  }
+
+  /* Gentle staggered entrance for hero / section content */
+  .rise {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  @keyframes rise {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Decorative twinkle */
+  .twinkle { animation: twinkle 3.5s ease-in-out infinite; }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.35; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.1); }
+  }
+}

@@ -1,0 +1,54 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '@/layouts/PageLayout.astro';
+import MapEmbed from '@/components/MapEmbed.astro';
+import CTABand from '@/components/CTABand.astro';
+import Icon from '@/components/Icon.astro';
+import { site } from '@/config/site';
+
+const areas = (await getCollection('areas')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+<PageLayout
+  title="Service Areas"
+  description={`Twinkling Hearts In Home Care proudly serves ${site.serviceArea} with compassionate non-medical senior home care. See the communities we serve.`}
+  eyebrow="Proudly Local"
+  heading="The communities we’re honored to serve"
+  intro={`As a locally owned, family-run agency, we provide in-home care across ${site.serviceArea}. Don’t see your town listed? Call us — we may still serve your area.`}
+  crumbs={[{ name: 'Service Areas', href: '/service-areas' }]}
+>
+  <section class="container-prose py-14 md:py-20">
+    <div class="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-start lg:gap-14">
+      <div>
+        <ul class="grid gap-4 sm:grid-cols-2">
+          {areas.map((area) => (
+            <li>
+              <a
+                href={`/service-areas/${area.id}`}
+                class="group flex items-center justify-between gap-3 rounded-2xl border border-sage-100 bg-white p-5 shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-lift"
+              >
+                <span class="flex items-center gap-3">
+                  <Icon name="pin" size={22} class="text-sage-600" />
+                  <span>
+                    <span class="block font-semibold text-sage-900">{area.data.city}, {area.data.region}</span>
+                    <span class="block text-sm text-taupe-600">In-home senior care</span>
+                  </span>
+                </span>
+                <Icon name="arrow" size={18} class="text-teal-700 transition-transform group-hover:translate-x-1" />
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p class="mt-6 rounded-2xl bg-sage-50/70 p-5 text-ink-soft">
+          <strong class="text-sage-900">Don’t see your community?</strong> Our
+          service area is always growing. Give us a call at
+          <a href={site.phoneHref} class="font-semibold text-teal-700">{site.phone}</a>
+          and we’ll let you know how we can help.
+        </p>
+      </div>
+      <MapEmbed class="h-full min-h-[360px]" />
+    </div>
+  </section>
+  <CTABand />
+</PageLayout>

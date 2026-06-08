@@ -1,0 +1,134 @@
+---
+import { Image } from 'astro:assets';
+import PageLayout from '@/layouts/PageLayout.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import CTABand from '@/components/CTABand.astro';
+import Icon from '@/components/Icon.astro';
+import { site } from '@/config/site';
+import teamImg from '@/assets/images/team.jpeg';
+import breakfastImg from '@/assets/images/breakfast.jpeg';
+
+const values = [
+  { icon: 'heart', title: 'Compassion', text: 'We lead with kindness. Every interaction is rooted in genuine care for the person in front of us.' },
+  { icon: 'shield', title: 'Dignity', text: 'We honor each person’s independence, privacy, and worth — always treating them as we would our own family.' },
+  { icon: 'check', title: 'Trust', text: 'We do what we say, show up when we promise, and communicate openly so families never have to wonder.' },
+  { icon: 'users', title: 'Connection', text: 'Care is personal. We build real relationships that bring comfort, companionship, and joy.' },
+] as const;
+
+const credentials = [
+  'Fully insured and bonded',
+  'Background-checked, screened caregivers',
+  'Caregivers carefully matched to each client',
+  'Ongoing caregiver training and support',
+  'Personalized, written care plans',
+  'Open, consistent family communication',
+];
+---
+<PageLayout
+  title="About Twinkling Hearts In Home Care"
+  description="Learn about Twinkling Hearts In Home Care — a locally owned, family-run agency built on compassion, dignity, and genuine connection in senior home care."
+  eyebrow="Our Story"
+  heading="More than a business — a family who shows up"
+  intro="Twinkling Hearts In Home Care was born from a simple belief: that every person deserves to grow older with dignity, comfort, and someone who truly cares."
+  crumbs={[{ name: 'About', href: '/about' }]}
+>
+  <!-- story -->
+  <section class="container-prose py-14 md:py-20">
+    <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+      <div>
+        <SectionHeading eyebrow="Why We Exist" title="Care that comes from the heart" />
+        <div class="mt-5 space-y-4 text-lg leading-relaxed text-ink-soft">
+          <p>
+            We started Twinkling Hearts after seeing firsthand how much a kind,
+            dependable caregiver can change a family’s life. We understood the
+            worry of wondering whether a loved one was safe, the exhaustion of
+            caregiving, and the relief that comes from finding someone you can
+            truly trust.
+          </p>
+          <p>
+            So we built the agency we wished we’d had — one where care is
+            personal, caregivers are chosen with heart, and families are treated
+            like our own. Today, that promise guides everything we do.
+          </p>
+          <p class="font-display text-xl text-sage-800">“{site.miniTagline}”</p>
+        </div>
+      </div>
+      <div class="relative mx-auto max-w-md">
+        <div aria-hidden="true" class="absolute -inset-3 -rotate-2 rounded-[2rem] bg-sage-100"></div>
+        <Image
+          src={breakfastImg}
+          alt="A Twinkling Hearts caregiver serving breakfast to a senior client at home"
+          widths={[400, 612]}
+          sizes="(min-width: 1024px) 28rem, 90vw"
+          class="relative rounded-[1.75rem] shadow-lift"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- values -->
+  <section class="bg-sage-50/60 py-16 md:py-24">
+    <div class="container-prose">
+      <SectionHeading eyebrow="What We Stand For" title="The values at our core" align="center" />
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {values.map((v) => (
+          <div class="rounded-3xl border border-sage-100 bg-white p-7 text-center shadow-soft">
+            <span class="mx-auto inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-sage-50 text-sage-700">
+              <Icon name={v.icon} size={28} />
+            </span>
+            <h3 class="mt-4 text-lg text-sage-900">{v.title}</h3>
+            <p class="mt-2 leading-relaxed text-ink-soft">{v.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- team -->
+  <section class="container-prose py-16 md:py-24">
+    <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+      <div class="order-2 lg:order-1 relative mx-auto max-w-sm">
+        <div aria-hidden="true" class="absolute -inset-3 rotate-2 rounded-[2rem] bg-gold-200/60"></div>
+        <Image
+          src={teamImg}
+          alt="The Twinkling Hearts In Home Care team wearing branded shirts, seated together"
+          widths={[360, 600]}
+          sizes="(min-width: 1024px) 24rem, 80vw"
+          class="relative rounded-[1.75rem] shadow-lift"
+          loading="lazy"
+        />
+      </div>
+      <div class="order-1 lg:order-2">
+        <SectionHeading eyebrow="Meet the Team" title="Caregivers chosen for skill and heart" />
+        <p class="mt-5 text-lg leading-relaxed text-ink-soft">
+          Our caregivers are the heart of Twinkling Hearts. Each one is carefully
+          screened, background-checked, and selected not just for experience, but
+          for warmth, patience, and genuine compassion. We hire people we would
+          trust with our own parents — and we support them with ongoing training
+          so your loved one always receives dependable, caring help.
+        </p>
+        <p class="mt-4 text-sm text-taupe-600">
+          Team photo shown; individual caregiver bios will be added soon.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- credentials -->
+  <section class="bg-sage-50/60 py-16 md:py-24">
+    <div class="container-prose">
+      <SectionHeading eyebrow="Trust & Credentials" title="Your family’s safety and peace of mind" align="center" />
+      <ul class="mx-auto mt-10 grid max-w-3xl gap-4 sm:grid-cols-2">
+        {credentials.map((c) => (
+          <li class="flex items-center gap-3 rounded-2xl border border-sage-100 bg-white p-5 shadow-soft">
+            <Icon name="check" size={22} class="shrink-0 text-teal-600" />
+            <span class="font-medium text-sage-900">{c}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <CTABand />
+</PageLayout>

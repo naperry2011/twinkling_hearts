@@ -1,0 +1,28 @@
+---
+import Icon from './Icon.astro';
+interface QA {
+  question: string;
+  answer: string;
+}
+interface Props {
+  items: QA[];
+}
+const { items } = Astro.props;
+---
+<div class="divide-y divide-sage-100 overflow-hidden rounded-3xl border border-sage-100 bg-white shadow-soft">
+  {items.map((item) => (
+    <details class="group">
+      <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 text-lg font-semibold text-sage-900 transition-colors hover:bg-sage-50 focus-visible:outline-3 focus-visible:outline-teal-500 [&::-webkit-details-marker]:hidden">
+        <span>{item.question}</span>
+        <Icon
+          name="chevron"
+          size={22}
+          class="shrink-0 text-sage-600 transition-transform duration-300 group-open:rotate-180"
+        />
+      </summary>
+      <div class="px-6 pb-6 text-[1.05rem] leading-relaxed text-ink-soft">
+        {item.answer}
+      </div>
+    </details>
+  ))}
+</div>

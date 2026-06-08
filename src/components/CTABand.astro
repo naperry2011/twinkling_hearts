@@ -1,0 +1,30 @@
+---
+import Button from './Button.astro';
+import Icon from './Icon.astro';
+import { site } from '@/config/site';
+interface Props {
+  title?: string;
+  text?: string;
+}
+const {
+  title = "Ready to talk? Your first conversation is free.",
+  text = "Tell us about your loved one and we'll help you find the right care — with no cost and no obligation.",
+} = Astro.props;
+---
+<section class="relative overflow-hidden bg-sage-800 text-cream">
+  <!-- decorative twinkles -->
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0 opacity-40">
+    <Icon name="sparkle" size={120} class="twinkle absolute -right-6 -top-6 text-gold-400/40" />
+    <Icon name="sparkle" size={70} class="twinkle absolute bottom-4 left-8 text-teal-300/30" />
+  </div>
+  <div class="container-prose relative flex flex-col items-center gap-6 py-16 text-center md:py-20">
+    <h2 class="max-w-2xl text-3xl text-cream sm:text-4xl">{title}</h2>
+    <p class="max-w-xl text-lg text-sage-100">{text}</p>
+    <div class="flex flex-col gap-3 sm:flex-row">
+      <Button href="/contact" variant="gold" size="lg" icon="heart">Request a Free Assessment</Button>
+      <Button href={site.phoneHref} variant="outline" size="lg" icon="phone" class="border-cream text-cream hover:bg-cream hover:text-sage-900">
+        Call {site.phone}
+      </Button>
+    </div>
+  </div>
+</section>

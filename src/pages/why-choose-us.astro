@@ -1,0 +1,77 @@
+---
+import { Image } from 'astro:assets';
+import PageLayout from '@/layouts/PageLayout.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import Steps from '@/components/Steps.astro';
+import CTABand from '@/components/CTABand.astro';
+import Icon from '@/components/Icon.astro';
+import chessImg from '@/assets/images/chess.jpeg';
+
+const reasons = [
+  { icon: 'users', title: 'Caregivers matched with care', text: 'We don’t send whoever is available. We thoughtfully match your loved one with a caregiver who fits their personality, needs, and routine — and we work to keep that relationship consistent so trust can grow.' },
+  { icon: 'shield', title: 'Screened, trained, and trusted', text: 'Every caregiver is background-checked and carefully vetted before they ever enter a home. We invest in ongoing training so the care your family receives is skilled, safe, and kind.' },
+  { icon: 'heart', title: 'Genuinely personalized care', text: 'Care plans are never one-size-fits-all. We take the time to learn what makes your loved one feel comfortable and respected, then build their care around it.' },
+  { icon: 'phone', title: 'Communication you can count on', text: 'Families are partners in care. We keep you informed, stay reachable, and welcome your input — so you’re never left in the dark about how your loved one is doing.' },
+  { icon: 'clock', title: 'Flexible and responsive', text: 'Life changes, and so do care needs. Whether you need more hours, fewer, or a different kind of support, we adapt quickly and without hassle.' },
+  { icon: 'home', title: 'Locally owned, deeply invested', text: 'We’re not a faceless franchise. We’re your neighbors, personally invested in the families and community we serve.' },
+] as const;
+
+const steps = [
+  { title: 'A free conversation', text: 'We start by listening — no scripts, no pressure. Just an honest conversation about your loved one and your family’s needs.' },
+  { title: 'A plan built for them', text: 'We design a personalized care plan and match a caregiver who’s right for your loved one’s personality and routine.' },
+  { title: 'Ongoing, attentive care', text: 'We stay involved — checking in, adjusting as needs change, and keeping your family informed and reassured.' },
+];
+---
+<PageLayout
+  title="Why Choose Twinkling Hearts"
+  description="Discover why families trust Twinkling Hearts In Home Care — carefully matched, background-checked caregivers, personalized care plans, and reliable communication."
+  eyebrow="The Twinkling Hearts Difference"
+  heading="Why families choose Twinkling Hearts"
+  intro="Choosing care for someone you love is one of the most important decisions a family can make. Here’s why so many families trust us with that decision."
+  crumbs={[{ name: 'Why Choose Us', href: '/why-choose-us' }]}
+>
+  <section class="container-prose py-14 md:py-20">
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {reasons.map((r) => (
+        <div class="rounded-3xl border border-sage-100 bg-white p-7 shadow-soft">
+          <span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-sage-50 text-sage-700">
+            <Icon name={r.icon} size={24} />
+          </span>
+          <h2 class="mt-4 text-lg text-sage-900">{r.title}</h2>
+          <p class="mt-2 leading-relaxed text-ink-soft">{r.text}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-sage-50/60 py-16 md:py-24">
+    <div class="container-prose grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+      <div class="relative mx-auto max-w-md">
+        <div aria-hidden="true" class="absolute -inset-3 -rotate-2 rounded-[2rem] bg-white"></div>
+        <Image
+          src={chessImg}
+          alt="Two senior men enjoying a game of chess together outdoors"
+          widths={[400, 612]}
+          sizes="(min-width: 1024px) 28rem, 90vw"
+          class="relative rounded-[1.75rem] shadow-lift"
+          loading="lazy"
+        />
+      </div>
+      <div>
+        <SectionHeading eyebrow="It Starts With a Hello" title="Care that begins with listening" />
+        <p class="mt-5 text-lg leading-relaxed text-ink-soft">
+          Great care isn’t just about tasks — it’s about understanding the
+          person. Before anything else, we get to know your loved one: their
+          story, their preferences, and the moments that bring them joy.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-prose py-16 md:py-24">
+    <SectionHeading eyebrow="How It Works" title="Care, the Twinkling Hearts way" align="center" />
+    <div class="mt-12"><Steps steps={steps} /></div>
+  </section>
+
+  <CTABand />
+</PageLayout>

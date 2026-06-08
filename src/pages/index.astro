@@ -1,0 +1,248 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import ServiceCard from '@/components/ServiceCard.astro';
+import Testimonial from '@/components/Testimonial.astro';
+import Steps from '@/components/Steps.astro';
+import CTABand from '@/components/CTABand.astro';
+import Button from '@/components/Button.astro';
+import Icon from '@/components/Icon.astro';
+import { site } from '@/config/site';
+import heroImg from '@/assets/images/comfort.jpeg';
+import coupleImg from '@/assets/images/couple-walk.jpeg';
+
+const services = (await getCollection('services')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+const testimonials = (await getCollection('testimonials')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+const trustStrip = [
+  { icon: 'shield', label: 'Insured & Bonded' },
+  { icon: 'check', label: 'Background-Checked Caregivers' },
+  { icon: 'heart', label: 'Free In-Home Assessment' },
+  { icon: 'home', label: 'Locally Owned & Family-Run' },
+] as const;
+
+const pillars = [
+  { icon: 'users', title: 'Carefully Matched Caregivers', text: 'We pair your loved one with a caregiver chosen for both skill and personality — someone who feels like family, not a stranger.' },
+  { icon: 'shield', title: 'Screened & Background-Checked', text: 'Every caregiver is thoroughly vetted, background-checked, and trained. We only hire people we would trust with our own families.' },
+  { icon: 'heart', title: 'Truly Personalized Care', text: 'No two people are alike. We build each care plan around your loved one’s needs, routines, and the things that bring them joy.' },
+  { icon: 'clock', title: 'Flexible, Reliable Scheduling', text: 'From a few hours a week to around-the-clock support, we shape care around your family’s life — and adapt as needs change.' },
+  { icon: 'home', title: 'Comfort of Home', text: 'There is no place like home. We help seniors stay safe and independent in the place they love most, surrounded by memories.' },
+  { icon: 'phone', title: 'Always in Communication', text: 'Families are never left wondering. We keep you informed and reachable, so you always know your loved one is well.' },
+] as const;
+
+const steps = [
+  { title: 'Reach Out', text: 'Call us or request a free in-home assessment. We listen to your situation and answer every question — no cost, no obligation.' },
+  { title: 'Personalized Care Plan', text: 'Together we create a care plan built around your loved one’s needs, preferences, and routines, and match the right caregiver.' },
+  { title: 'Compassionate Care Begins', text: 'Your matched caregiver steps in with warmth and reliability, and we stay in close touch with your family every step of the way.' },
+];
+---
+<BaseLayout
+  title={`${site.name} | In-Home Senior Care You Can Trust`}
+  description={site.description}
+>
+  <!-- ============================ HERO ============================ -->
+  <section class="relative overflow-hidden bg-gradient-to-b from-sage-50 via-cream to-cream">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+      <Icon name="sparkle" size={90} class="twinkle absolute right-[8%] top-12 text-gold-300/50" />
+      <Icon name="sparkle" size={50} class="twinkle absolute left-[6%] top-32 text-teal-300/40" />
+      <Icon name="leaf" size={110} class="absolute -left-10 top-1/3 text-sage-200/50" />
+    </div>
+    <div class="container-prose relative grid items-center gap-10 py-16 md:py-20 lg:grid-cols-2 lg:gap-14">
+      <div class="rise">
+        <span class="eyebrow"><Icon name="sparkle" size={15} class="text-gold-500" />{site.miniTagline}</span>
+        <h1 class="mt-4 text-4xl leading-[1.08] sm:text-5xl lg:text-6xl">
+          Care You Can Trust,<br />
+          <span class="text-sage-600">Hearts That Understand.</span>
+        </h1>
+        <p class="mt-6 max-w-xl text-xl leading-relaxed text-ink-soft">
+          Compassionate, dependable in-home care that helps your loved one stay
+          safe, comfortable, and independent — right where they belong. Serving
+          families across {site.serviceArea}.
+        </p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <Button href="/contact" variant="gold" size="lg" icon="heart">Request a Free Assessment</Button>
+          <Button href={site.phoneHref} variant="outline" size="lg" icon="phone">Call {site.phone}</Button>
+        </div>
+      </div>
+      <div class="rise" style="animation-delay:120ms">
+        <div class="relative mx-auto max-w-md">
+          <div aria-hidden="true" class="absolute -inset-3 -rotate-2 rounded-[2rem] bg-sage-100"></div>
+          <Image
+            src={heroImg}
+            alt="A Twinkling Hearts caregiver smiling warmly with an elderly woman at home"
+            widths={[400, 612]}
+            sizes="(min-width: 1024px) 28rem, 90vw"
+            class="relative rounded-[1.75rem] shadow-lift"
+            loading="eager"
+            fetchpriority="high"
+          />
+          <div class="absolute -bottom-5 -left-5 hidden rounded-2xl bg-white p-4 shadow-lift sm:flex sm:items-center sm:gap-3">
+            <span class="flex h-11 w-11 items-center justify-center rounded-full bg-sage-50">
+              <Icon name="heart" size={22} class="text-gold-500" />
+            </span>
+            <span class="text-sm font-semibold leading-tight text-sage-900">Care that feels<br />like family</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- trust strip -->
+    <div class="border-y border-sage-100 bg-white/70">
+      <ul class="container-prose grid grid-cols-2 gap-4 py-5 md:flex md:items-center md:justify-between">
+        {trustStrip.map((t) => (
+          <li class="flex items-center gap-2.5 text-sm font-semibold text-sage-800">
+            <Icon name={t.icon} size={20} class="text-sage-600" />
+            {t.label}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- ========================== MISSION ========================== -->
+  <section class="container-prose py-16 md:py-24">
+    <div class="mx-auto max-w-3xl text-center">
+      <span class="eyebrow justify-center"><Icon name="sparkle" size={15} class="text-gold-500" />Our Promise</span>
+      <p class="mt-5 font-display text-2xl leading-snug text-sage-900 sm:text-[2rem]">
+        We believe growing older should be met with dignity, warmth, and the
+        comfort of home. At Twinkling Hearts, compassion isn’t a slogan — it’s
+        the reason we do this work.
+      </p>
+      <p class="mt-6 text-lg leading-relaxed text-ink-soft">
+        Founded on real caregiving experience, Twinkling Hearts In Home Care
+        provides personalized, non-medical support that lets seniors age in
+        place — safely and gracefully — while giving families true peace of mind.
+        To us, your loved one is never a client. They’re family.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========================== SERVICES ========================= -->
+  <section class="bg-sage-50/60 py-16 md:py-24">
+    <div class="container-prose">
+      <SectionHeading eyebrow="How We Help" title="Compassionate care, tailored to your family" align="center" />
+      <p class="mx-auto mt-4 max-w-2xl text-center text-lg text-ink-soft">
+        From a helping hand with daily routines to a trusted break for family
+        caregivers, our services adapt to exactly what your loved one needs.
+      </p>
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {services.map((s) => (
+          <ServiceCard
+            href={`/services/${s.id}`}
+            icon={s.data.icon}
+            title={s.data.shortTitle ?? s.data.title}
+            summary={s.data.summary}
+          />
+        ))}
+      </div>
+      <div class="mt-10 text-center">
+        <Button href="/services" variant="ghost" icon="arrow" iconRight>Explore all our services</Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= WHY CHOOSE US ======================= -->
+  <section class="container-prose py-16 md:py-24">
+    <SectionHeading eyebrow="Why Families Choose Us" title="More than caregivers — a family you can lean on" align="center" />
+    <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {pillars.map((p) => (
+        <div class="rounded-3xl border border-sage-100 bg-white p-7 shadow-soft">
+          <span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-sage-50 text-sage-700">
+            <Icon name={p.icon} size={24} />
+          </span>
+          <h3 class="mt-4 text-lg text-sage-900">{p.title}</h3>
+          <p class="mt-2 leading-relaxed text-ink-soft">{p.text}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ====================== HOW TO GET STARTED ==================== -->
+  <section class="bg-sage-50/60 py-16 md:py-24">
+    <div class="container-prose">
+      <SectionHeading eyebrow="Getting Started Is Simple" title="Three gentle steps to care" align="center" />
+      <p class="mx-auto mt-4 max-w-2xl text-center text-lg text-ink-soft">
+        We know reaching out can feel like a big step. We make it easy, warm,
+        and pressure-free from the very first call.
+      </p>
+      <div class="mt-12"><Steps steps={steps} /></div>
+    </div>
+  </section>
+
+  <!-- ========================= TESTIMONIALS ====================== -->
+  <section class="container-prose py-16 md:py-24">
+    <SectionHeading eyebrow="From the Families We Serve" title="Trusted by families like yours" align="center" />
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+      {testimonials.map((t) => (
+        <Testimonial quote={t.data.quote} author={t.data.author} relation={t.data.relation} location={t.data.location} />
+      ))}
+    </div>
+    <p class="mt-6 text-center text-sm text-taupe-600">
+      Reviews shown are illustrative samples and will be replaced with verified family testimonials.
+    </p>
+  </section>
+
+  <!-- ======================= SERVICE AREA ======================== -->
+  <section class="bg-sage-50/60 py-16 md:py-24">
+    <div class="container-prose grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+      <div class="order-2 lg:order-1">
+        <div class="relative mx-auto max-w-sm">
+          <div aria-hidden="true" class="absolute -inset-3 rotate-2 rounded-[2rem] bg-white"></div>
+          <Image
+            src={coupleImg}
+            alt="An elderly couple walking together along a tree-lined path"
+            widths={[360, 600]}
+            sizes="(min-width: 1024px) 24rem, 80vw"
+            class="relative rounded-[1.75rem] shadow-lift"
+            loading="lazy"
+          />
+        </div>
+      </div>
+      <div class="order-1 lg:order-2">
+        <SectionHeading eyebrow="Proudly Local" title={`Serving ${site.serviceArea}`} />
+        <p class="mt-5 text-lg leading-relaxed text-ink-soft">
+          We’re your neighbors. As a locally owned, family-run agency, we know
+          the communities we serve — and we’re honored to care for the families
+          within them. If you’re wondering whether we cover your area, just ask.
+        </p>
+        <div class="mt-7">
+          <Button href="/service-areas" variant="primary" icon="pin">See our service areas</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= PAYMENT NOTE ====================== -->
+  <section class="container-prose py-16 md:py-24">
+    <div class="rounded-3xl border border-sage-100 bg-white p-8 shadow-soft md:p-12">
+      <div class="grid gap-8 md:grid-cols-[auto_1fr] md:items-start">
+        <span class="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-sage-50 text-sage-700">
+          <Icon name="heart" size={28} />
+        </span>
+        <div>
+          <h2 class="text-2xl text-sage-900 sm:text-3xl">Care should be within reach</h2>
+          <p class="mt-4 text-lg leading-relaxed text-ink-soft">
+            Many families pay privately or through long-term care insurance.
+            Depending on your situation, Medicaid waiver programs or veterans’
+            benefits may also help cover in-home care. We’ll talk through your
+            options openly during your free assessment and help you find a plan
+            that fits your family’s budget — with clear, honest pricing and no
+            surprises.
+          </p>
+          <p class="mt-4 text-sm text-taupe-600">
+            Payment options vary by state and individual eligibility. We’re glad
+            to point you toward resources that may apply.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTABand />
+</BaseLayout>

@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '@/layouts/PageLayout.astro';
+import ServiceCard from '@/components/ServiceCard.astro';
+import CTABand from '@/components/CTABand.astro';
+import { site } from '@/config/site';
+
+const services = (await getCollection('services')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+<PageLayout
+  title="Our In-Home Care Services"
+  description="Explore Twinkling Hearts In Home Care services — personal care, medication reminders, light housekeeping, and respite care for family caregivers."
+  eyebrow="How We Help"
+  heading="Care designed around your loved one"
+  intro="Every family’s needs are different. Whether you need a few hours of companionship or daily hands-on support, our services flex to fit — and grow with you over time."
+  crumbs={[{ name: 'Services', href: '/services' }]}
+>
+  <section class="container-prose py-14 md:py-20">
+    <div class="grid gap-6 sm:grid-cols-2">
+      {services.map((s) => (
+        <ServiceCard
+          href={`/services/${s.id}`}
+          icon={s.data.icon}
+          title={s.data.title}
+          summary={s.data.summary}
+        />
+      ))}
+    </div>
+    <div class="mt-12 rounded-3xl border border-sage-100 bg-sage-50/70 p-8 text-center md:p-10">
+      <h2 class="text-2xl text-sage-900">Not sure what you need?</h2>
+      <p class="mx-auto mt-3 max-w-xl text-lg text-ink-soft">
+        That’s exactly what our free in-home assessment is for. We’ll listen,
+        learn about {site.shortName ? 'your loved one' : 'your family'}, and
+        recommend the right level of care — with no pressure and no cost.
+      </p>
+    </div>
+  </section>
+  <CTABand />
+</PageLayout>

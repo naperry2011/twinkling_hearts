@@ -1,0 +1,29 @@
+{
+  "title": "Medication Reminders & Monitoring",
+  "shortTitle": "Medication Reminders",
+  "order": 2,
+  "icon": "pill",
+  "summary": "Timely, gentle reminders that the right medications are taken at the right time — and a watchful eye for anything that seems off.",
+  "intro": "Managing multiple prescriptions can be overwhelming, and a missed or doubled dose can have real consequences. Our caregivers provide friendly, dependable reminders and keep a careful eye on routines, helping your loved one stay on schedule and giving your family one less thing to worry about. (Our caregivers offer non-medical reminders and monitoring; they do not administer medication unless permitted under your state's regulations.)",
+  "includes": [
+    "Reminders to take medications on time, as prescribed",
+    "Help organizing and keeping track of pill schedules",
+    "Monitoring for missed doses or unusual reactions",
+    "Coordination and communication with family members",
+    "Watching for changes in appetite, mood, or wellbeing",
+    "Reminders for appointments and refills"
+  ],
+  "helps": [
+    "Seniors managing several daily medications",
+    "Loved ones with mild memory loss who forget doses",
+    "Families living far away who worry about consistency",
+    "Anyone newly home from the hospital with a new regimen"
+  ],
+  "expect": [
+    "A review of the current medication schedule during the assessment",
+    "A simple routine built around your loved one's day",
+    "Prompt communication if something seems wrong",
+    "Respect for your family's wishes and your physician's instructions"
+  ],
+  "metaDescription": "Dependable medication reminders and monitoring at home — helping seniors take the right medications on time, with watchful care and family communication."
+}

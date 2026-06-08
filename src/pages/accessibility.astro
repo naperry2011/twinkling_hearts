@@ -1,0 +1,41 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import { site } from '@/config/site';
+---
+<PageLayout
+  title="Accessibility Statement"
+  description="Twinkling Hearts In Home Care is committed to making this website accessible to everyone, including people with disabilities."
+  eyebrow="Welcome to Everyone"
+  heading="Accessibility Statement"
+  crumbs={[{ name: 'Accessibility', href: '/accessibility' }]}
+>
+  <section class="container-prose py-14 md:py-20">
+    <div class="mx-auto max-w-3xl space-y-6 text-lg leading-relaxed text-ink-soft [&_h2]:mt-8 [&_h2]:text-2xl [&_h2]:text-sage-900">
+      <p>
+        We believe everyone deserves a warm welcome — including on our website.
+        Twinkling Hearts In Home Care is committed to making this site usable for
+        people of all abilities, and we’ve built it with that goal in mind.
+      </p>
+      <h2>What we’ve done</h2>
+      <ul class="list-disc space-y-2 pl-6">
+        <li>Large, legible text and generous spacing for easy reading</li>
+        <li>Strong color contrast that meets WCAG 2.1 AA guidance</li>
+        <li>Full keyboard navigation with clear focus indicators</li>
+        <li>Descriptive text alternatives for meaningful images</li>
+        <li>Respect for reduced-motion preferences</li>
+        <li>Clear, semantic structure for screen readers</li>
+      </ul>
+      <h2>We’re always improving</h2>
+      <p>
+        Accessibility is an ongoing commitment. If you encounter any difficulty
+        using this website, or have a suggestion, please let us know — we want to
+        hear from you and will do our best to help.
+      </p>
+      <h2>Contact us</h2>
+      <p>
+        Call <a class="font-semibold text-teal-700" href={site.phoneHref}>{site.phone}</a>
+        or email <a class="font-semibold text-teal-700" href={`mailto:${site.email}`}>{site.email}</a>.
+      </p>
+    </div>
+  </section>
+</PageLayout>
