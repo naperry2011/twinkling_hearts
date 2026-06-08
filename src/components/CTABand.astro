@@ -1,6 +1,8 @@
 ---
 import Button from './Button.astro';
-import Icon from './Icon.astro';
+import Sparkle from './Sparkle.astro';
+import LeafSprig from './LeafSprig.astro';
+import DottedDivider from './DottedDivider.astro';
 import { site } from '@/config/site';
 interface Props {
   title?: string;
@@ -11,18 +13,21 @@ const {
   text = "Tell us about your loved one and we'll help you find the right care — with no cost and no obligation.",
 } = Astro.props;
 ---
-<section class="relative overflow-hidden bg-sage-800 text-cream">
-  <!-- decorative twinkles -->
-  <div aria-hidden="true" class="pointer-events-none absolute inset-0 opacity-40">
-    <Icon name="sparkle" size={120} class="twinkle absolute -right-6 -top-6 text-gold-400/40" />
-    <Icon name="sparkle" size={70} class="twinkle absolute bottom-4 left-8 text-teal-300/30" />
+<section class="grain relative overflow-hidden border-y border-gold-300/60 bg-gradient-to-br from-[#f7eed7] via-cream to-sage-50">
+  <!-- decorative twinkles + botanicals -->
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+    <Sparkle size={96} trail class="absolute right-8 top-8 text-gold-400/60" />
+    <Sparkle size={40} class="absolute bottom-10 left-12 text-teal-400/40" />
+    <LeafSprig size={120} class="absolute -bottom-3 -left-4 text-sage-300/60" />
+    <LeafSprig size={110} flip class="absolute -top-2 right-2 text-sage-300/50" />
   </div>
-  <div class="container-prose relative flex flex-col items-center gap-6 py-16 text-center md:py-20">
-    <h2 class="max-w-2xl text-3xl text-cream sm:text-4xl">{title}</h2>
-    <p class="max-w-xl text-lg text-sage-100">{text}</p>
-    <div class="flex flex-col gap-3 sm:flex-row">
-      <Button href="/contact" variant="gold" size="lg" icon="heart">Request a Free Assessment</Button>
-      <Button href={site.phoneHref} variant="outline" size="lg" icon="phone" class="border-cream text-cream hover:bg-cream hover:text-sage-900">
+  <div class="container-prose relative flex flex-col items-center gap-5 py-16 text-center md:py-20">
+    <h2 class="max-w-2xl text-3xl text-sage-900 sm:text-4xl">{title}</h2>
+    <DottedDivider />
+    <p class="max-w-xl text-lg text-ink-soft">{text}</p>
+    <div class="mt-2 flex flex-col gap-3 sm:flex-row">
+      <Button href="/contact" variant="foil" size="lg" icon="heart">Request a Free Assessment</Button>
+      <Button href={site.phoneHref} variant="outline" size="lg" icon="phone">
         Call {site.phone}
       </Button>
     </div>

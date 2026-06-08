@@ -4,7 +4,7 @@ import type { IconName } from '@/lib/icons';
 
 interface Props {
   href: string;
-  variant?: 'primary' | 'gold' | 'outline' | 'ghost';
+  variant?: 'primary' | 'gold' | 'foil' | 'outline' | 'ghost';
   size?: 'md' | 'lg';
   icon?: IconName;
   iconRight?: boolean;
@@ -30,6 +30,8 @@ const variants = {
     'bg-sage-700 text-cream shadow-soft hover:bg-sage-800 hover:shadow-lift hover:-translate-y-0.5',
   gold:
     'bg-gold-500 text-ink shadow-soft hover:bg-gold-400 hover:shadow-lift hover:-translate-y-0.5',
+  foil:
+    'bg-foil text-ink shadow-soft hover:shadow-lift hover:-translate-y-0.5',
   outline:
     'border-2 border-sage-600 text-sage-800 hover:bg-sage-600 hover:text-cream',
   ghost: 'text-teal-700 hover:text-teal-600 underline-offset-4 hover:underline',

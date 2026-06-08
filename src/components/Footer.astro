@@ -1,6 +1,6 @@
 ---
-import Brandmark from './Brandmark.astro';
 import Icon from './Icon.astro';
+import Sparkle from './Sparkle.astro';
 import { site, navLinks, socialLinks } from '@/config/site';
 import { getCollection } from 'astro:content';
 
@@ -16,7 +16,12 @@ const cityLine = [site.address.city, site.address.region]
   <div class="container-prose grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
     <!-- Brand + NAP -->
     <div class="lg:col-span-1">
-      <Brandmark class="[&_*]:text-cream [&_span]:text-cream" />
+      <div class="relative inline-block leading-none">
+        <Sparkle size={26} class="absolute -left-5 -top-3 text-teal-300/70" />
+        <span class="block text-lg font-semibold uppercase tracking-[0.2em] text-cream">Twinkling</span>
+        <span class="-mt-1 block font-script text-5xl text-gold-300">Hearts</span>
+        <span class="mt-1 block text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-sage-200">In Home Care</span>
+      </div>
       <p class="mt-4 max-w-xs text-sm leading-relaxed text-sage-200">
         {site.miniTagline}
       </p>

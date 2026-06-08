@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
@@ -9,6 +8,10 @@ import Steps from '@/components/Steps.astro';
 import CTABand from '@/components/CTABand.astro';
 import Button from '@/components/Button.astro';
 import Icon from '@/components/Icon.astro';
+import Sparkle from '@/components/Sparkle.astro';
+import LeafSprig from '@/components/LeafSprig.astro';
+import DottedDivider from '@/components/DottedDivider.astro';
+import PhotoFrame from '@/components/PhotoFrame.astro';
 import { site } from '@/config/site';
 import heroImg from '@/assets/images/comfort.jpeg';
 import coupleImg from '@/assets/images/couple-walk.jpeg';
@@ -47,42 +50,44 @@ const steps = [
   description={site.description}
 >
   <!-- ============================ HERO ============================ -->
-  <section class="relative overflow-hidden bg-gradient-to-b from-sage-50 via-cream to-cream">
+  <section class="wash-hero grain relative overflow-hidden">
     <div aria-hidden="true" class="pointer-events-none absolute inset-0">
-      <Icon name="sparkle" size={90} class="twinkle absolute right-[8%] top-12 text-gold-300/50" />
-      <Icon name="sparkle" size={50} class="twinkle absolute left-[6%] top-32 text-teal-300/40" />
-      <Icon name="leaf" size={110} class="absolute -left-10 top-1/3 text-sage-200/50" />
+      <Sparkle size={150} trail class="absolute left-[2%] top-8 text-teal-400/40" />
+      <Sparkle size={46} class="absolute right-[10%] top-24 text-gold-300/60" />
+      <LeafSprig size={130} class="absolute -left-12 bottom-10 text-sage-300/50" />
     </div>
-    <div class="container-prose relative grid items-center gap-10 py-16 md:py-20 lg:grid-cols-2 lg:gap-14">
+    <div class="container-prose relative grid items-center gap-12 py-16 md:py-20 lg:grid-cols-2 lg:gap-14">
       <div class="rise">
-        <span class="eyebrow"><Icon name="sparkle" size={15} class="text-gold-500" />{site.miniTagline}</span>
-        <h1 class="mt-4 text-4xl leading-[1.08] sm:text-5xl lg:text-6xl">
-          Care You Can Trust,<br />
-          <span class="text-sage-600">Hearts That Understand.</span>
+        <span class="eyebrow"><Sparkle size={16} animate={false} class="text-gold-500" />{site.miniTagline}</span>
+        <h1 class="mt-4 text-4xl leading-[1.1] sm:text-5xl lg:text-[3.75rem]">
+          Care You Can Trust,
+          <span class="mt-2 block leading-[1.15]">
+            <span class="font-script text-foil pr-2 align-baseline text-[1.35em]">Hearts</span>
+            <span class="text-sage-700">That Understand.</span>
+          </span>
         </h1>
-        <p class="mt-6 max-w-xl text-xl leading-relaxed text-ink-soft">
+        <p class="mt-7 max-w-xl text-xl leading-relaxed text-ink-soft">
           Compassionate, dependable in-home care that helps your loved one stay
           safe, comfortable, and independent — right where they belong. Serving
           families across {site.serviceArea}.
         </p>
-        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Button href="/contact" variant="gold" size="lg" icon="heart">Request a Free Assessment</Button>
+        <DottedDivider align="left" class="mt-7" />
+        <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+          <Button href="/contact" variant="foil" size="lg" icon="heart">Request a Free Assessment</Button>
           <Button href={site.phoneHref} variant="outline" size="lg" icon="phone">Call {site.phone}</Button>
         </div>
       </div>
       <div class="rise" style="animation-delay:120ms">
         <div class="relative mx-auto max-w-md">
-          <div aria-hidden="true" class="absolute -inset-3 -rotate-2 rounded-[2rem] bg-sage-100"></div>
-          <Image
+          <PhotoFrame
             src={heroImg}
             alt="A Twinkling Hearts caregiver smiling warmly with an elderly woman at home"
-            widths={[400, 612]}
-            sizes="(min-width: 1024px) 28rem, 90vw"
-            class="relative rounded-[1.75rem] shadow-lift"
+            shape="arch"
+            tilt="left"
             loading="eager"
             fetchpriority="high"
           />
-          <div class="absolute -bottom-5 -left-5 hidden rounded-2xl bg-white p-4 shadow-lift sm:flex sm:items-center sm:gap-3">
+          <div class="absolute -bottom-4 right-2 z-10 hidden rounded-2xl border border-sage-100 bg-white/95 p-4 shadow-lift backdrop-blur sm:flex sm:items-center sm:gap-3">
             <span class="flex h-11 w-11 items-center justify-center rounded-full bg-sage-50">
               <Icon name="heart" size={22} class="text-gold-500" />
             </span>
@@ -124,7 +129,7 @@ const steps = [
   </section>
 
   <!-- ========================== SERVICES ========================= -->
-  <section class="bg-sage-50/60 py-16 md:py-24">
+  <section class="wash-sage grain relative py-16 md:py-24">
     <div class="container-prose">
       <SectionHeading eyebrow="How We Help" title="Compassionate care, tailored to your family" align="center" />
       <p class="mx-auto mt-4 max-w-2xl text-center text-lg text-ink-soft">
@@ -164,7 +169,7 @@ const steps = [
   </section>
 
   <!-- ====================== HOW TO GET STARTED ==================== -->
-  <section class="bg-sage-50/60 py-16 md:py-24">
+  <section class="wash-sage grain relative py-16 md:py-24">
     <div class="container-prose">
       <SectionHeading eyebrow="Getting Started Is Simple" title="Three gentle steps to care" align="center" />
       <p class="mx-auto mt-4 max-w-2xl text-center text-lg text-ink-soft">
@@ -189,20 +194,18 @@ const steps = [
   </section>
 
   <!-- ======================= SERVICE AREA ======================== -->
-  <section class="bg-sage-50/60 py-16 md:py-24">
+  <section class="wash-cream grain relative py-16 md:py-24">
     <div class="container-prose grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
       <div class="order-2 lg:order-1">
-        <div class="relative mx-auto max-w-sm">
-          <div aria-hidden="true" class="absolute -inset-3 rotate-2 rounded-[2rem] bg-white"></div>
-          <Image
-            src={coupleImg}
-            alt="An elderly couple walking together along a tree-lined path"
-            widths={[360, 600]}
-            sizes="(min-width: 1024px) 24rem, 80vw"
-            class="relative rounded-[1.75rem] shadow-lift"
-            loading="lazy"
-          />
-        </div>
+        <PhotoFrame
+          src={coupleImg}
+          alt="An elderly couple walking together along a tree-lined path"
+          shape="arch"
+          tilt="right"
+          widths={[360, 600]}
+          sizes="(min-width: 1024px) 24rem, 80vw"
+          class="max-w-sm"
+        />
       </div>
       <div class="order-1 lg:order-2">
         <SectionHeading eyebrow="Proudly Local" title={`Serving ${site.serviceArea}`} />

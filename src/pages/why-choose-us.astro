@@ -1,9 +1,9 @@
 ---
-import { Image } from 'astro:assets';
 import PageLayout from '@/layouts/PageLayout.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
 import Steps from '@/components/Steps.astro';
 import CTABand from '@/components/CTABand.astro';
+import PhotoFrame from '@/components/PhotoFrame.astro';
 import Icon from '@/components/Icon.astro';
 import chessImg from '@/assets/images/chess.jpeg';
 
@@ -44,19 +44,15 @@ const steps = [
     </div>
   </section>
 
-  <section class="bg-sage-50/60 py-16 md:py-24">
+  <section class="wash-sage grain relative py-16 md:py-24">
     <div class="container-prose grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
-      <div class="relative mx-auto max-w-md">
-        <div aria-hidden="true" class="absolute -inset-3 -rotate-2 rounded-[2rem] bg-white"></div>
-        <Image
-          src={chessImg}
-          alt="Two senior men enjoying a game of chess together outdoors"
-          widths={[400, 612]}
-          sizes="(min-width: 1024px) 28rem, 90vw"
-          class="relative rounded-[1.75rem] shadow-lift"
-          loading="lazy"
-        />
-      </div>
+      <PhotoFrame
+        src={chessImg}
+        alt="Two senior men enjoying a game of chess together outdoors"
+        shape="arch"
+        tilt="left"
+        class="max-w-md"
+      />
       <div>
         <SectionHeading eyebrow="It Starts With a Hello" title="Care that begins with listening" />
         <p class="mt-5 text-lg leading-relaxed text-ink-soft">

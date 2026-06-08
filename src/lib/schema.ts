@@ -4,18 +4,19 @@ const LOGO_URL = `${site.url}/og-default.png`;
 
 /** Sitewide LocalBusiness node. Non-medical care → LocalBusiness (not HomeHealthCareService). */
 export function localBusiness() {
+  // Only include real social URLs (placeholders end in a bare ".com/").
   const sameAs = socialLinks
     .map((s) => s.href)
-    .filter((h) => h && !h.endsWith('.com/') && !h.endsWith('x.com/'));
+    .filter((h) => h && !h.endsWith('.com/'));
 
   const address: Record<string, string> = {
     '@type': 'PostalAddress',
     addressLocality: site.address.city,
     addressRegion: site.address.region,
-    postalCode: site.address.postalCode,
     addressCountry: site.address.country,
   };
   if (site.address.street) address.streetAddress = site.address.street;
+  if (site.address.postalCode) address.postalCode = site.address.postalCode;
 
   return {
     '@context': 'https://schema.org',

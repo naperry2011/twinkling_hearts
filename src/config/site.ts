@@ -25,17 +25,17 @@ export const site = {
   phoneHref: 'tel:+15555555555', // TODO: match real phone (E.164)
 
   address: {
-    // TODO: confirm — leave street blank if service-area business with no public office
+    // Service-area business — no public street address yet (TODO if/when one exists).
     street: '',
-    city: 'Your City', // TODO
-    region: 'ST', // TODO: state abbreviation
-    regionName: 'Your State', // TODO: full state name
-    postalCode: '00000', // TODO
+    city: 'Anderson',
+    region: 'IN',
+    regionName: 'Indiana',
+    postalCode: '', // TODO: add when a business mailing ZIP is available
     country: 'US',
   },
 
-  // Cities / counties served (also drives the Service Areas pages). TODO: confirm.
-  serviceArea: 'Your City and surrounding communities', // TODO short phrase used in copy
+  // Cities / counties served (also drives the Service Areas pages).
+  serviceArea: 'Anderson, Indiana and the surrounding Madison County area',
 
   // --- Hours ---------------------------------------------------------------
   // TODO: confirm. Care is often 24/7; office/phone hours may differ.
@@ -70,7 +70,7 @@ export const site = {
   social: {
     facebook: 'https://www.facebook.com/', // TODO: real page URL
     instagram: 'https://www.instagram.com/', // TODO
-    x: 'https://x.com/', // TODO
+    linkedin: 'https://www.linkedin.com/', // TODO: real company page URL
   },
 
   // --- Lead form -----------------------------------------------------------
@@ -78,16 +78,15 @@ export const site = {
   web3formsKey: 'YOUR-WEB3FORMS-ACCESS-KEY',
 
   // --- Map embed (Contact / Service Area pages) ----------------------------
-  // TODO: replace q= with the real city/region.
   mapEmbedSrc:
-    'https://www.google.com/maps?q=United+States&output=embed',
+    'https://www.google.com/maps?q=Anderson,+Indiana&output=embed',
 } as const;
 
 /** Convenience: array of social links present (filters out unset). */
 export const socialLinks = [
   { label: 'Facebook', href: site.social.facebook, key: 'facebook' },
   { label: 'Instagram', href: site.social.instagram, key: 'instagram' },
-  { label: 'X', href: site.social.x, key: 'x' },
+  { label: 'LinkedIn', href: site.social.linkedin, key: 'linkedin' },
 ] as const;
 
 /** Primary navigation used by header + footer. */

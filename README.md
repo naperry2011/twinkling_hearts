@@ -20,7 +20,8 @@ npm run preview  # preview the production build
 - `src/pages/` — routes. `[slug].astro` files generate one page per content entry.
 - `src/components/`, `src/layouts/` — design system + page scaffolding.
 - `src/assets/images/` — photos (optimized at build); `public/` — favicon, OG image, robots.txt.
-- `scripts/build-og.mjs` — regenerates `public/og-default.png` (the social-share image).
+- `scripts/build-assets.mjs` — crops the real logo into `public/logo-lockup.png` (nav) +
+  `logo-icon.png`, and regenerates `public/og-default.png`. Re-run after replacing `logo.jpeg`.
 
 ---
 

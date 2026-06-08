@@ -1,8 +1,9 @@
 ---
-import { Image } from 'astro:assets';
 import PageLayout from '@/layouts/PageLayout.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
 import CTABand from '@/components/CTABand.astro';
+import PhotoFrame from '@/components/PhotoFrame.astro';
+import DottedDivider from '@/components/DottedDivider.astro';
 import Icon from '@/components/Icon.astro';
 import { site } from '@/config/site';
 import teamImg from '@/assets/images/team.jpeg';
@@ -50,25 +51,22 @@ const credentials = [
             personal, caregivers are chosen with heart, and families are treated
             like our own. Today, that promise guides everything we do.
           </p>
-          <p class="font-display text-xl text-sage-800">“{site.miniTagline}”</p>
+          <DottedDivider align="left" class="!mt-7" />
+          <p class="font-script text-4xl leading-tight text-sage-700">“{site.miniTagline}”</p>
         </div>
       </div>
-      <div class="relative mx-auto max-w-md">
-        <div aria-hidden="true" class="absolute -inset-3 -rotate-2 rounded-[2rem] bg-sage-100"></div>
-        <Image
-          src={breakfastImg}
-          alt="A Twinkling Hearts caregiver serving breakfast to a senior client at home"
-          widths={[400, 612]}
-          sizes="(min-width: 1024px) 28rem, 90vw"
-          class="relative rounded-[1.75rem] shadow-lift"
-          loading="lazy"
-        />
-      </div>
+      <PhotoFrame
+        src={breakfastImg}
+        alt="A Twinkling Hearts caregiver serving breakfast to a senior client at home"
+        shape="arch"
+        tilt="left"
+        class="max-w-md"
+      />
     </div>
   </section>
 
   <!-- values -->
-  <section class="bg-sage-50/60 py-16 md:py-24">
+  <section class="wash-sage grain relative py-16 md:py-24">
     <div class="container-prose">
       <SectionHeading eyebrow="What We Stand For" title="The values at our core" align="center" />
       <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -88,15 +86,15 @@ const credentials = [
   <!-- team -->
   <section class="container-prose py-16 md:py-24">
     <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
-      <div class="order-2 lg:order-1 relative mx-auto max-w-sm">
-        <div aria-hidden="true" class="absolute -inset-3 rotate-2 rounded-[2rem] bg-gold-200/60"></div>
-        <Image
+      <div class="order-2 lg:order-1">
+        <PhotoFrame
           src={teamImg}
           alt="The Twinkling Hearts In Home Care team wearing branded shirts, seated together"
+          shape="rounded"
+          tilt="right"
           widths={[360, 600]}
           sizes="(min-width: 1024px) 24rem, 80vw"
-          class="relative rounded-[1.75rem] shadow-lift"
-          loading="lazy"
+          class="max-w-sm"
         />
       </div>
       <div class="order-1 lg:order-2">
@@ -116,7 +114,7 @@ const credentials = [
   </section>
 
   <!-- credentials -->
-  <section class="bg-sage-50/60 py-16 md:py-24">
+  <section class="wash-sage grain relative py-16 md:py-24">
     <div class="container-prose">
       <SectionHeading eyebrow="Trust & Credentials" title="Your family’s safety and peace of mind" align="center" />
       <ul class="mx-auto mt-10 grid max-w-3xl gap-4 sm:grid-cols-2">

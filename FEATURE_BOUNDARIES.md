@@ -8,8 +8,8 @@ Does NOT Own: Presentation, markup, structured-data shape
 Communicates With: Layouts, Header/Footer, ContactForm, MapEmbed, schema.ts
 Isolation Level: Strong (pure data module, no imports of UI)
 
-## Design System (global.css, Button, Icon, icons.ts, SectionHeading, Brandmark)
-Owns: Tokens (color/font/shadow), primitive UI, icon set, brand mark
+## Design System (global.css, Button, Icon, icons.ts, SectionHeading, Sparkle, LeafSprig, DottedDivider, PhotoFrame)
+Owns: Tokens (color/font/shadow, watercolor, gold-foil, arch), primitive UI, icon set, signature motifs, photo treatment
 Does NOT Own: Page content, business data, routing
 Communicates With: Every component/page (via classes + imports)
 Isolation Level: Strong (presentation only)
@@ -47,5 +47,5 @@ Isolation Level: Moderate (external service dependency)
 ## Brand Assets (src/assets/images, public/)
 Owns: Source images, favicon, generated OG image
 Does NOT Own: Where/how they render
-Communicates With: Pages via astro:assets; scripts/build-og.mjs regenerates OG
+Communicates With: Pages via astro:assets; scripts/build-assets.mjs crops logo + regenerates OG
 Isolation Level: Strong

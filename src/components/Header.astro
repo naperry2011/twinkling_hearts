@@ -1,102 +1,118 @@
 ---
-import Brandmark from './Brandmark.astro';
 import Icon from './Icon.astro';
-import { site, navLinks } from '@/config/site';
+import { site, navLinks, socialLinks } from '@/config/site';
 
 const path = Astro.url.pathname;
 const isActive = (href: string) =>
   href === '/' ? path === '/' : path.startsWith(href);
 ---
-<header class="sticky top-0 z-40 border-b border-sage-100 bg-cream/85 backdrop-blur-md">
-  <div class="container-prose flex items-center justify-between gap-4 py-3">
-    <a href="/" class="rounded-lg" aria-label={`${site.name} — home`}>
-      <Brandmark />
-    </a>
-
-    <!-- Desktop nav -->
-    <nav class="hidden items-center gap-1 lg:flex" aria-label="Primary">
-      {navLinks.map((link) => (
-        <a
-          href={link.href}
-          aria-current={isActive(link.href) ? 'page' : undefined}
-          class:list={[
-            'rounded-lg px-3 py-2 text-[0.95rem] font-semibold transition-colors',
-            isActive(link.href)
-              ? 'text-sage-900'
-              : 'text-ink-soft hover:text-sage-800',
-          ]}
-        >
-          {link.label}
-        </a>
-      ))}
-    </nav>
-
-    <div class="hidden items-center gap-3 lg:flex">
-      <a
-        href={site.phoneHref}
-        class="inline-flex items-center gap-2 font-semibold text-teal-700 hover:text-teal-600"
-      >
-        <Icon name="phone" size={18} />
-        <span>{site.phone}</span>
-      </a>
-      <a
-        href="/contact"
-        class="inline-flex min-h-[44px] items-center rounded-xl bg-gold-500 px-5 py-2.5 font-semibold text-ink shadow-soft transition-all hover:-translate-y-0.5 hover:bg-gold-400 hover:shadow-lift"
-      >
-        Free Assessment
-      </a>
-    </div>
-
-    <!-- Mobile toggle -->
-    <button
-      type="button"
-      id="menu-toggle"
-      class="inline-flex h-11 w-11 items-center justify-center rounded-lg text-sage-900 hover:bg-sage-100 lg:hidden"
-      aria-expanded="false"
-      aria-controls="mobile-menu"
-      aria-label="Open menu"
-    >
-      <Icon name="menu" size={28} class="block" />
-    </button>
-  </div>
-
-  <!-- Mobile menu -->
-  <div
-    id="mobile-menu"
-    hidden
-    class="border-t border-sage-100 bg-cream lg:hidden"
-  >
-    <nav class="container-prose flex flex-col gap-1 py-4" aria-label="Mobile">
-      {navLinks.map((link) => (
-        <a
-          href={link.href}
-          aria-current={isActive(link.href) ? 'page' : undefined}
-          class:list={[
-            'rounded-lg px-3 py-3 text-lg font-semibold',
-            isActive(link.href)
-              ? 'bg-sage-100 text-sage-900'
-              : 'text-ink-soft hover:bg-sage-50',
-          ]}
-        >
-          {link.label}
-        </a>
-      ))}
-      <div class="mt-2 flex flex-col gap-3 border-t border-sage-100 pt-4">
-        <a
-          href={site.phoneHref}
-          class="inline-flex items-center gap-2 px-3 text-lg font-semibold text-teal-700"
-        >
-          <Icon name="phone" size={20} />
+<header class="sticky top-0 z-40">
+  <!-- Utility strip -->
+  <div class="bg-sage-800 text-white">
+    <div class="container-prose flex items-center justify-between gap-4 py-2 text-sm">
+      <span class="hidden items-center gap-2 text-sage-100 sm:inline-flex">
+        <Icon name="clock" size={15} class="text-gold-300" />
+        {site.hours.display}
+      </span>
+      <span class="flex items-center gap-5">
+        <a href={site.phoneHref} class="inline-flex items-center gap-2 font-semibold text-white hover:text-gold-300">
+          <Icon name="phone" size={15} class="text-gold-300" />
           {site.phone}
         </a>
+        <span class="hidden items-center gap-3 md:inline-flex">
+          {socialLinks.map((s) => (
+            <a href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label} class="text-white hover:text-gold-300">
+              <Icon name={s.key} size={16} />
+            </a>
+          ))}
+        </span>
+      </span>
+    </div>
+  </div>
+
+  <!-- Main bar -->
+  <div class="border-b border-sage-100 bg-cream/90 backdrop-blur-md">
+    <div class="container-prose flex items-center justify-between gap-4 py-2.5">
+      <a href="/" class="flex items-center rounded-lg" aria-label={`${site.name} — home`}>
+        <img
+          src="/logo-lockup.png"
+          width="1500"
+          height="970"
+          alt={site.name}
+          class="h-16 w-auto sm:h-[4.5rem]"
+          fetchpriority="high"
+        />
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden items-center gap-1 lg:flex" aria-label="Primary">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            aria-current={isActive(link.href) ? 'page' : undefined}
+            class:list={[
+              'group relative px-3 py-2 text-[0.8rem] font-semibold uppercase tracking-[0.12em] transition-colors',
+              isActive(link.href) ? 'text-sage-900' : 'text-ink-soft hover:text-sage-800',
+            ]}
+          >
+            {link.label}
+            <span
+              aria-hidden="true"
+              class:list={[
+                'absolute inset-x-2 -bottom-0.5 h-0.5 rounded-full bg-gradient-to-r from-gold-300 to-gold-500 transition-transform duration-300 origin-center',
+                isActive(link.href) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100',
+              ]}
+            ></span>
+          </a>
+        ))}
+      </nav>
+
+      <div class="hidden lg:block">
         <a
           href="/contact"
-          class="inline-flex min-h-[52px] items-center justify-center rounded-xl bg-gold-500 px-5 font-semibold text-ink shadow-soft"
+          class="bg-foil inline-flex min-h-[46px] items-center gap-2 rounded-full px-5 font-semibold text-ink shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-lift"
         >
-          Request a Free Assessment
+          <Icon name="heart" size={18} />
+          Free Assessment
         </a>
       </div>
-    </nav>
+
+      <!-- Mobile toggle -->
+      <button
+        type="button"
+        id="menu-toggle"
+        class="inline-flex h-11 w-11 items-center justify-center rounded-lg text-sage-900 hover:bg-sage-100 lg:hidden"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label="Open menu"
+      >
+        <Icon name="menu" size={28} />
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" hidden class="border-t border-sage-100 bg-cream lg:hidden">
+      <nav class="container-prose flex flex-col gap-1 py-4" aria-label="Mobile">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            aria-current={isActive(link.href) ? 'page' : undefined}
+            class:list={[
+              'rounded-lg px-3 py-3 text-lg font-semibold',
+              isActive(link.href) ? 'bg-sage-100 text-sage-900' : 'text-ink-soft hover:bg-sage-50',
+            ]}
+          >
+            {link.label}
+          </a>
+        ))}
+        <a
+          href="/contact"
+          class="bg-foil mt-3 inline-flex min-h-[52px] items-center justify-center gap-2 rounded-full px-5 font-semibold text-ink shadow-soft"
+        >
+          <Icon name="heart" size={20} /> Request a Free Assessment
+        </a>
+      </nav>
+    </div>
   </div>
 </header>
 

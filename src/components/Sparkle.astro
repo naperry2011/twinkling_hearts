@@ -1,0 +1,43 @@
+---
+/**
+ * Signature twinkle starburst, drawn from the logo. Decorative only.
+ * `trail` adds the logo's dotted comet trail to the upper-left.
+ * Color via text color (currentColor). Respects prefers-reduced-motion (global).
+ */
+interface Props {
+  size?: number;
+  class?: string;
+  trail?: boolean;
+  animate?: boolean;
+}
+const { size = 28, class: className = '', trail = false, animate = true } = Astro.props;
+const w = trail ? size * 2.6 : size;
+const star = (cx: number, cy: number, r: number, o = 1) =>
+  `<path transform="translate(${cx} ${cy}) scale(${r / 12})" opacity="${o}"
+     d="M0 -12 C1 -5 4 -2.5 12 0 C4 2.5 1 5 0 12 C-1 5 -4 2.5 -12 0 C-4 -2.5 -1 -5 0 -12 Z"/>`;
+---
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox={`0 0 ${trail ? 130 : 50} 50`}
+  width={w}
+  height={size}
+  fill="currentColor"
+  aria-hidden="true"
+  class:list={[className, animate && 'twinkle-slow']}
+  set:html={[
+    // main starburst
+    star(38, 25, 16),
+    // small secondary star
+    `<g opacity="0.8">${star(13, 13, 7)}</g>`,
+    trail
+      ? `<g opacity="0.7">
+           ${star(64, 19, 5, 0.9)}
+           <circle cx="78" cy="27" r="2.4"/>
+           <circle cx="90" cy="20" r="1.8"/>
+           <circle cx="101" cy="28" r="1.4"/>
+           <circle cx="112" cy="22" r="1"/>
+           <circle cx="122" cy="29" r="0.8"/>
+         </g>`
+      : '',
+  ].join('')}
+/>

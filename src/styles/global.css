@@ -1,6 +1,7 @@
-/* Self-hosted variable fonts (preloaded weights configured in BaseLayout) */
+/* Self-hosted fonts */
 @import '@fontsource-variable/fraunces';
 @import '@fontsource-variable/source-sans-3';
+@import '@fontsource/allura'; /* script accent — large decorative use only */
 @import 'tailwindcss';
 
 /* ------------------------------------------------------------------ */
@@ -49,6 +50,7 @@
   /* Typography */
   --font-display: 'Fraunces Variable', 'Fraunces', ui-serif, Georgia, serif;
   --font-body: 'Source Sans 3 Variable', 'Source Sans 3', ui-sans-serif, system-ui, sans-serif;
+  --font-script: 'Allura', 'Snell Roundhand', 'Apple Chancery', cursive;
 
   /* Radii */
   --radius-xl: 0.875rem;
@@ -163,5 +165,82 @@
   @keyframes twinkle {
     0%, 100% { opacity: 0.35; transform: scale(0.9); }
     50% { opacity: 1; transform: scale(1.1); }
+  }
+  .twinkle-slow { animation: twinkle 5s ease-in-out infinite; }
+
+  /* Script accent — large decorative words only, never body/UI */
+  .font-script {
+    font-family: var(--font-script);
+    font-weight: 400;
+    line-height: 0.9;
+  }
+
+  /* Gold-foil treatments */
+  .bg-foil {
+    background-image: linear-gradient(
+      135deg, #a07d2e 0%, #c9a24a 22%, #f0dca8 42%, #e3c878 55%, #c9a24a 72%, #9a7528 100%
+    );
+  }
+  .text-foil {
+    background-image: linear-gradient(
+      120deg, #a07d2e 0%, #c9a24a 30%, #e9d18a 50%, #c9a24a 70%, #9a7528 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Watercolor washes — soft layered color blooms on cream */
+  .wash-hero {
+    background-color: var(--color-cream);
+    background-image:
+      radial-gradient(60% 55% at 82% 18%, rgba(214, 179, 95, 0.20), transparent 70%),
+      radial-gradient(50% 50% at 12% 0%, rgba(127, 205, 217, 0.18), transparent 70%),
+      radial-gradient(70% 70% at 50% 115%, rgba(138, 166, 126, 0.22), transparent 70%);
+  }
+  .wash-sage {
+    background-color: var(--color-sage-50);
+    background-image:
+      radial-gradient(45% 60% at 100% 0%, rgba(138, 166, 126, 0.20), transparent 70%),
+      radial-gradient(40% 55% at 0% 100%, rgba(214, 179, 95, 0.12), transparent 70%);
+  }
+  .wash-cream {
+    background-color: var(--color-cream);
+    background-image:
+      radial-gradient(40% 50% at 95% 10%, rgba(127, 205, 217, 0.10), transparent 70%),
+      radial-gradient(45% 50% at 5% 90%, rgba(138, 166, 126, 0.12), transparent 70%);
+  }
+
+  /* Fine paper grain overlay (apply to a relative parent; decorative) */
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.5;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  }
+
+  /* House-roof-inspired arched image frame */
+  .arch {
+    border-top-left-radius: 50% 24%;
+    border-top-right-radius: 50% 24%;
+    border-bottom-left-radius: 1.75rem;
+    border-bottom-right-radius: 1.75rem;
+    overflow: hidden;
+  }
+
+  /* Unifying duotone wash laid over photos so stock colors harmonize */
+  .photo-wash::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: linear-gradient(
+      170deg, rgba(127, 205, 217, 0.12) 0%, transparent 32%,
+      rgba(95, 122, 85, 0.10) 78%, rgba(60, 79, 53, 0.24) 100%
+    );
+    mix-blend-mode: multiply;
   }
 }

@@ -38,11 +38,11 @@ Path: src/pages/404.astro
 Responsibility: Not-found page (noindex)
 Invokes: BaseLayout, Button
 
-## Asset Script: OG image generator
-Path: scripts/build-og.mjs
-Responsibility: One-off generation of public/og-default.png via sharp
-Invokes: `node scripts/build-og.mjs`
-Depends On: sharp
+## Asset Script: brand asset generator
+Path: scripts/build-assets.mjs
+Responsibility: Crop logo.jpeg → public/logo-lockup.png + logo-icon.png; rebuild og-default.png (sharp)
+Invokes: `node scripts/build-assets.mjs`
+Depends On: sharp, src/assets/images/logo.jpeg
 
 ## Client runtime scripts (hydration-free, inline)
 Path: src/components/Header.astro (mobile menu toggle), src/components/ContactForm.astro (fetch submit)
