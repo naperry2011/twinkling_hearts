@@ -61,6 +61,8 @@ const filled: Record<string, string> = {
 const isFilled = name in filled;
 const path = isFilled ? filled[name] : stroke[name];
 const labelled = !!title;
+const escapeHtml = (s: string) =>
+  s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 ---
 <svg
   xmlns="http://www.w3.org/2000/svg"
@@ -76,5 +78,5 @@ const labelled = !!title;
   role={labelled ? 'img' : undefined}
   aria-hidden={labelled ? undefined : 'true'}
   aria-label={title}
-  set:html={(labelled ? `<title>${title}</title>` : '') + path}
+  set:html={(labelled ? `<title>${escapeHtml(title)}</title>` : '') + path}
 />

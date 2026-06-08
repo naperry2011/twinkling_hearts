@@ -22,7 +22,6 @@ const services = (await getCollection('services')).sort(
       {services.map((s) => (
         <ServiceCard
           href={`/services/${s.id}`}
-          icon={s.data.icon}
           title={s.data.title}
           summary={s.data.summary}
         />

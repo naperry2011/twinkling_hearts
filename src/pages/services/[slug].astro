@@ -94,7 +94,6 @@ const columns = [
         {related.map((s) => (
           <ServiceCard
             href={`/services/${s.id}`}
-            icon={s.data.icon}
             title={s.data.shortTitle ?? s.data.title}
             summary={s.data.summary}
           />

@@ -8,7 +8,6 @@ const services = defineCollection({
     title: z.string(),
     shortTitle: z.string().optional(),
     order: z.number().default(0),
-    icon: z.enum(['hands', 'pill', 'broom', 'respite']),
     summary: z.string(), // one-line for cards
     intro: z.string(), // warm "what it is" paragraph
     includes: z.array(z.string()), // sub-services / what's included
