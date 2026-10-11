@@ -15,6 +15,7 @@ import PhotoFrame from '@/components/PhotoFrame.astro';
 import { site } from '@/config/site';
 import heroImg from '@/assets/images/comfort.jpeg';
 import coupleImg from '@/assets/images/couple-walk.jpeg';
+import breakfastImg from '@/assets/images/breakfast.jpeg';
 
 const services = (await getCollection('services')).sort(
   (a, b) => a.data.order - b.data.order
@@ -31,16 +32,16 @@ const trustStrip = [
 ] as const;
 
 const pillars = [
-  { icon: 'users', title: 'Carefully Matched Caregivers', text: 'We pair your loved one with a caregiver chosen for both skill and personality — someone who feels like family, not a stranger.' },
+  { icon: 'users', title: 'Carefully Matched Caregivers', text: 'We pair your loved one with a caregiver chosen for both skill and personality, someone who feels like family, not a stranger.' },
   { icon: 'shield', title: 'Screened & Background-Checked', text: 'Every caregiver is thoroughly vetted, background-checked, and trained. We only hire people we would trust with our own families.' },
   { icon: 'heart', title: 'Truly Personalized Care', text: 'No two people are alike. We build each care plan around your loved one’s needs, routines, and the things that bring them joy.' },
-  { icon: 'clock', title: 'Flexible, Reliable Scheduling', text: 'From a few hours a week to around-the-clock support, we shape care around your family’s life — and adapt as needs change.' },
+  { icon: 'clock', title: 'Flexible, Reliable Scheduling', text: 'From a few hours a week to around-the-clock support, we shape care around your family’s life, and adapt as needs change.' },
   { icon: 'home', title: 'Comfort of Home', text: 'There is no place like home. We help seniors stay safe and independent in the place they love most, surrounded by memories.' },
   { icon: 'phone', title: 'Always in Communication', text: 'Families are never left wondering. We keep you informed and reachable, so you always know your loved one is well.' },
 ] as const;
 
 const steps = [
-  { title: 'Reach Out', text: 'Call us or request a free in-home assessment. We listen to your situation and answer every question — no cost, no obligation.' },
+  { title: 'Reach Out', text: 'Call us or request a free in-home assessment. We listen to your situation and answer every question. No cost, no obligation.' },
   { title: 'Personalized Care Plan', text: 'Together we create a care plan built around your loved one’s needs, preferences, and routines, and match the right caregiver.' },
   { title: 'Compassionate Care Begins', text: 'Your matched caregiver steps in with warmth and reliability, and we stay in close touch with your family every step of the way.' },
 ];
@@ -67,9 +68,9 @@ const steps = [
           </span>
         </h1>
         <p class="mt-7 max-w-xl text-xl leading-relaxed text-ink-soft">
-          Compassionate, dependable in-home care that helps your loved one stay
-          safe, comfortable, and independent — right where they belong. Serving
-          families across {site.serviceArea}.
+          At Twinkling Hearts, we endeavor to promote independence while
+          providing the comfort, support, and trusted care our clients and their
+          families can count on. Serving {site.serviceArea}.
         </p>
         <DottedDivider align="left" class="mt-7" />
         <div class="mt-7 flex flex-col gap-3 sm:flex-row">
@@ -110,21 +111,61 @@ const steps = [
     </div>
   </section>
 
-  <!-- ========================== MISSION ========================== -->
+  <!-- ===================== MISSION & VISION ====================== -->
   <section class="container-prose py-16 md:py-24">
-    <div class="mx-auto max-w-3xl text-center">
-      <span class="eyebrow justify-center"><Icon name="sparkle" size={15} class="text-gold-500" />Our Promise</span>
-      <p class="mt-5 font-display text-2xl leading-snug text-sage-900 sm:text-[2rem]">
-        We believe growing older should be met with dignity, warmth, and the
-        comfort of home. At Twinkling Hearts, compassion isn’t a slogan — it’s
-        the reason we do this work.
-      </p>
-      <p class="mt-6 text-lg leading-relaxed text-ink-soft">
-        Founded on real caregiving experience, Twinkling Hearts In Home Care
-        provides personalized, non-medical support that lets seniors age in
-        place — safely and gracefully — while giving families true peace of mind.
-        To us, your loved one is never a client. They’re family.
-      </p>
+    <div class="grid gap-6 md:grid-cols-2">
+      <div class="rounded-3xl border border-sage-100 bg-white p-8 shadow-soft md:p-10">
+        <span class="eyebrow"><Icon name="heart" size={15} class="text-gold-500" />Our Mission</span>
+        <p class="mt-5 text-lg leading-relaxed text-ink-soft">
+          At Twinkling Hearts In Home Care, our mission is to provide trusted,
+          compassionate care that allows individuals to live with greater
+          independence, dignity, and confidence in the comfort of their own homes
+          and communities. We are dedicated to meeting each person where they
+          are, honoring their individuality, supporting their families, and
+          delivering personalized services that bring comfort and peace of mind.
+        </p>
+      </div>
+      <div class="rounded-3xl border border-sage-100 bg-white p-8 shadow-soft md:p-10">
+        <span class="eyebrow"><Icon name="sparkle" size={15} class="text-gold-500" />Our Vision</span>
+        <p class="mt-5 font-display text-2xl leading-snug text-sage-900 sm:text-[1.75rem]">
+          To be a beacon of compassion in every community we serve, where hearts
+          shine through our care, families find peace of mind, and every client
+          feels valued, respected, and truly cared for.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== WHY WE EXIST ======================= -->
+  <section class="wash-cream grain relative py-16 md:py-24">
+    <div class="container-prose grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+      <div>
+        <SectionHeading eyebrow="Why We Exist" title="Born from caring for our grandmothers" />
+        <div class="mt-5 space-y-4 text-lg leading-relaxed text-ink-soft">
+          <p>
+            Our journey began with <strong class="text-sage-900">Barbara Jo</strong>,
+            the first grandmother we cared for, whose needs and experiences showed
+            us the importance of compassionate, dependable care at home.
+          </p>
+          <p>
+            Years later, when our grandmother <strong class="text-sage-900">Twinkle</strong>
+            became ill, caring for her deepened that purpose and inspired the name
+            <strong class="text-sage-900">Twinkling Hearts</strong>.
+          </p>
+        </div>
+        <div class="mt-7">
+          <Button href="/about" variant="ghost" icon="arrow" iconRight>Read our story</Button>
+        </div>
+      </div>
+      <PhotoFrame
+        src={breakfastImg}
+        alt="A Twinkling Hearts caregiver serving breakfast to a senior client at home"
+        shape="arch"
+        tilt="left"
+        widths={[360, 600]}
+        sizes="(min-width: 1024px) 24rem, 80vw"
+        class="max-w-sm"
+      />
     </div>
   </section>
 
@@ -133,8 +174,9 @@ const steps = [
     <div class="container-prose">
       <SectionHeading eyebrow="How We Help" title="Compassionate care, tailored to your family" align="center" />
       <p class="mx-auto mt-4 max-w-2xl text-center text-lg text-ink-soft">
-        From a helping hand with daily routines to a trusted break for family
-        caregivers, our services adapt to exactly what your loved one needs.
+        We provide compassionate, dependable support that helps individuals
+        maintain their independence, stay connected to their communities, and
+        live comfortably at home. We’re here to make daily life a little easier.
       </p>
       <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {services.map((s) => (
@@ -153,7 +195,18 @@ const steps = [
 
   <!-- ======================= WHY CHOOSE US ======================= -->
   <section class="container-prose py-16 md:py-24">
-    <SectionHeading eyebrow="Why Families Choose Us" title="More than caregivers — a family you can lean on" align="center" />
+    <SectionHeading eyebrow="Why Families Choose Us" title="The Twinkling Hearts Difference" align="center" />
+    <div class="mx-auto mt-5 max-w-2xl space-y-4 text-center text-lg leading-relaxed text-ink-soft">
+      <p>
+        We don’t just care for people. We care about who they are, their
+        stories, their routines, and the independence they value.
+      </p>
+      <p>
+        Every visit is guided by compassion, patience, and a heart-centered
+        approach, helping each client feel seen, respected, and supported as
+        they continue shining in the comfort of home.
+      </p>
+    </div>
     <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       {pillars.map((p) => (
         <div class="rounded-3xl border border-sage-100 bg-white p-7 shadow-soft">
@@ -210,7 +263,7 @@ const steps = [
         <SectionHeading eyebrow="Proudly Local" title={`Serving ${site.serviceArea}`} />
         <p class="mt-5 text-lg leading-relaxed text-ink-soft">
           We’re your neighbors. As a locally owned, family-run agency, we know
-          the communities we serve — and we’re honored to care for the families
+          the communities we serve, and we’re honored to care for the families
           within them. If you’re wondering whether we cover your area, just ask.
         </p>
         <div class="mt-7">
@@ -234,13 +287,16 @@ const steps = [
             Depending on your situation, Medicaid waiver programs or veterans’
             benefits may also help cover in-home care. We’ll talk through your
             options openly during your free assessment and help you find a plan
-            that fits your family’s budget — with clear, honest pricing and no
+            that fits your family’s budget, with clear, honest pricing and no
             surprises.
           </p>
           <p class="mt-4 text-sm text-taupe-600">
             Payment options vary by state and individual eligibility. We’re glad
             to point you toward resources that may apply.
           </p>
+          <div class="mt-6">
+            <Button href="/veterans" variant="ghost" icon="arrow" iconRight>Care for veterans</Button>
+          </div>
         </div>
       </div>
     </div>

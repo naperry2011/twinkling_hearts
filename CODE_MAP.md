@@ -62,6 +62,7 @@ Category: UI
 Primary Files:
 * src/pages/index.astro  (Home)
 * src/pages/about.astro, why-choose-us.astro, faq.astro, contact.astro
+* src/pages/veterans.astro  (veteran-focused view of the services collection; per-service copy in a local `veteranCopy` map)
 * src/pages/services/index.astro, services/[slug].astro
 * src/pages/service-areas/index.astro, service-areas/[slug].astro
 * src/pages/privacy.astro, accessibility.astro, 404.astro

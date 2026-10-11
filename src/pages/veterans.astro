@@ -1,0 +1,95 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '@/layouts/PageLayout.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import ServiceCard from '@/components/ServiceCard.astro';
+import CTABand from '@/components/CTABand.astro';
+import Icon from '@/components/Icon.astro';
+import { site } from '@/config/site';
+
+const veteranCopy: Record<string, string> = {
+  'personalized-assistance':
+    'Respectful, hands-on help with bathing, dressing, grooming, and mobility, so the veterans in your family can keep their routines and their independence at home.',
+  'medication-reminders':
+    'Dependable reminders and a watchful eye for veterans managing several prescriptions or follow-up appointments, with clear updates for the family.',
+  housekeeping:
+    'Meals, laundry, errands, and a safe, tidy home, handled with the same care and attention to detail our veterans have always given others.',
+  'respite-care':
+    'A trusted break for spouses and family members caring for a veteran, with a caregiver who knows the routine and keeps your loved one safe.',
+};
+
+const services = (await getCollection('services')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+const commitments = [
+  { icon: 'heart', title: 'Gratitude in every visit', text: 'We treat every veteran with the honor and respect their service has earned.' },
+  { icon: 'shield', title: 'Dignity and independence', text: 'Care is built around their routines, preferences, and the independence they value.' },
+  { icon: 'users', title: 'Support for the whole family', text: 'Spouses and children are kept informed and supported every step of the way.' },
+] as const;
+---
+<PageLayout
+  title="In-Home Care for Veterans"
+  description={`Compassionate in-home care for veterans in ${site.serviceArea}. Personal care, medication reminders, housekeeping, and respite from Twinkling Hearts In Home Care.`}
+  eyebrow="Serving Those Who Served"
+  heading="In-home care for veterans, with gratitude"
+  intro="Our veterans spent years caring for our country. Now we help them live with independence, dignity, and comfort in the homes they love."
+  crumbs={[{ name: 'Veterans', href: '/veterans' }]}
+>
+  <section class="container-prose py-14 md:py-20">
+    <SectionHeading eyebrow="How We Help" title="The same trusted care, focused on veterans" align="center" />
+    <p class="mx-auto mt-4 max-w-2xl text-center text-lg text-ink-soft">
+      Every service we offer is available to veterans and their families,
+      shaped around their needs, history, and daily life.
+    </p>
+    <div class="mt-12 grid gap-6 sm:grid-cols-2">
+      {services.map((s) => (
+        <ServiceCard
+          href={`/services/${s.id}`}
+          title={s.data.title}
+          summary={veteranCopy[s.id] ?? s.data.summary}
+        />
+      ))}
+    </div>
+  </section>
+
+  <section class="wash-sage grain relative py-16 md:py-24">
+    <div class="container-prose">
+      <SectionHeading eyebrow="Our Commitment" title="Honoring their service at home" align="center" />
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        {commitments.map((c) => (
+          <div class="rounded-3xl border border-sage-100 bg-white p-7 text-center shadow-soft">
+            <span class="mx-auto inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-sage-50 text-sage-700">
+              <Icon name={c.icon} size={28} />
+            </span>
+            <h3 class="mt-4 text-lg text-sage-900">{c.title}</h3>
+            <p class="mt-2 leading-relaxed text-ink-soft">{c.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="container-prose py-16 md:py-24">
+    <div class="rounded-3xl border border-sage-100 bg-white p-8 shadow-soft md:p-12">
+      <div class="grid gap-8 md:grid-cols-[auto_1fr] md:items-start">
+        <span class="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-sage-50 text-sage-700">
+          <Icon name="home" size={28} />
+        </span>
+        <div>
+          <h2 class="text-2xl text-sage-900 sm:text-3xl">Paying for care</h2>
+          <p class="mt-4 text-lg leading-relaxed text-ink-soft">
+            Depending on eligibility, veterans’ benefits may help cover in-home
+            care. We’ll talk through your options openly during your free
+            assessment and point you toward resources that may apply.
+          </p>
+          <p class="mt-4 text-sm text-taupe-600">
+            Benefit eligibility is determined by the VA and varies by individual.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTABand />
+</PageLayout>

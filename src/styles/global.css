@@ -1,14 +1,14 @@
 /* Self-hosted fonts */
 @import '@fontsource-variable/fraunces';
 @import '@fontsource-variable/source-sans-3';
-@import '@fontsource/allura'; /* script accent — large decorative use only */
+@import '@fontsource/allura'; /* script accent: large decorative use only */
 @import 'tailwindcss';
 
 /* ------------------------------------------------------------------ */
-/* Design tokens — keyed to the Twinkling Hearts logo                 */
+/* Design tokens: keyed to the Twinkling Hearts logo                 */
 /* ------------------------------------------------------------------ */
 @theme {
-  /* Sage — calm primary */
+  /* Sage: calm primary */
   --color-sage-50: #f4f7f1;
   --color-sage-100: #e6ede0;
   --color-sage-200: #d2dec8;
@@ -20,14 +20,14 @@
   --color-sage-800: #4a6042;
   --color-sage-900: #3c4f35;
 
-  /* Teal — accent + interactive */
+  /* Teal: accent + interactive */
   --color-teal-300: #7fcdd9;
   --color-teal-400: #4cb3c2;
   --color-teal-500: #2f97a8; /* accent */
   --color-teal-600: #267e8d;
   --color-teal-700: #1f6b78;
 
-  /* Gold — warm twinkle (large text / icons / accents ONLY) */
+  /* Gold: warm twinkle (large text / icons / accents ONLY) */
   --color-gold-200: #f0dca8;
   --color-gold-300: #e3c878;
   --color-gold-400: #d6b35f;
@@ -35,7 +35,7 @@
   --color-gold-600: #b08c38;
   --color-gold-700: #a07d2e;
 
-  /* Taupe — soft secondary text */
+  /* Taupe: soft secondary text */
   --color-taupe-300: #cdbcae;
   --color-taupe-400: #b59e8e;
   --color-taupe-600: #8c7361;
@@ -63,7 +63,7 @@
 }
 
 /* ------------------------------------------------------------------ */
-/* Base — accessible defaults for a senior / family audience          */
+/* Base: accessible defaults for a senior / family audience          */
 /* ------------------------------------------------------------------ */
 @layer base {
   :root {
@@ -168,7 +168,7 @@
   }
   .twinkle-slow { animation: twinkle 5s ease-in-out infinite; }
 
-  /* Script accent — large decorative words only, never body/UI */
+  /* Script accent: large decorative words only, never body/UI */
   .font-script {
     font-family: var(--font-script);
     font-weight: 400;
@@ -190,7 +190,7 @@
     color: transparent;
   }
 
-  /* Watercolor washes — soft layered color blooms on cream */
+  /* Watercolor washes: soft layered color blooms on cream */
   .wash-hero {
     background-color: var(--color-cream);
     background-image:

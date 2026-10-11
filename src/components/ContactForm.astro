@@ -112,13 +112,13 @@ const label = 'block text-sm font-semibold text-sage-900';
         if (res.ok && data.success) {
           form.reset();
           status.className = 'rounded-xl bg-sage-50 p-4 text-center text-base font-semibold text-sage-900';
-          status.textContent = 'Thank you — your message is on its way. We’ll be in touch within one business day.';
+          status.textContent = 'Thank you! Your message is on its way. We’ll be in touch within one business day.';
         } else {
           throw new Error(data.message || 'Submission failed');
         }
       } catch {
         status.className = 'rounded-xl bg-gold-200/50 p-4 text-center text-base font-semibold text-ink';
-        status.innerHTML = 'Something went wrong. Please call us directly — we’re glad to help.';
+        status.innerHTML = 'Something went wrong. Please call us directly. We’re glad to help.';
       } finally {
         submit.disabled = false;
       }

@@ -12,7 +12,7 @@ const SRC = join(root, 'src', 'assets', 'images', 'logo.jpeg');
 const lockupOut = join(root, 'src', 'assets', 'images', 'logo-lockup.png');
 const ogOut = join(root, 'public', 'og-default.png');
 
-// Source logo is 1918x1784. Manual crop box (tight) — verify in preview & nudge.
+// Source logo is 1918x1784. Manual crop box (tight): verify in preview & nudge.
 // Lockup: wordmark + icon, with the bottom tagline cropped off.
 const lockup = await sharp(SRC)
   .extract({ left: 230, top: 235, width: 1500, height: 895 })

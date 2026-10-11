@@ -3,7 +3,7 @@
  * Every component/page reads from here so values never drift and placeholders
  * are filled in ONE place before launch.
  *
- * ⚠️  LAUNCH BLOCKERS — replace every value marked `TODO` with real data and
+ * ⚠️  LAUNCH BLOCKERS: replace every value marked `TODO` with real data and
  *     make sure phone / address / hours / license match the Google Business
  *     Profile character-for-character before pointing the domain.
  */
@@ -15,17 +15,17 @@ export const site = {
   tagline: 'Care You Can Trust, Hearts That Understand.',
   miniTagline: 'Compassion is at the heart of our care.',
   description:
-    'Twinkling Hearts In Home Care provides compassionate, dependable non-medical in-home senior care — personal care, companionship, medication reminders, light housekeeping, and respite for families.',
+    'Twinkling Hearts In Home Care provides compassionate, dependable non-medical in-home senior care: personal care, companionship, medication reminders, light housekeeping, and respite for families.',
 
   url: 'https://twinklingheart.org',
 
   // --- Contact (NAP) -------------------------------------------------------
-  email: 'thihc2227@gmail.com', // TODO: consider a branded address (care@twinklingheart.org)
-  phone: '(555) 555-5555', // TODO: real business phone
-  phoneHref: 'tel:+15555555555', // TODO: match real phone (E.164)
+  email: 'ceo@twinklingheart.org',
+  phone: '(317) 200-0732',
+  phoneHref: 'tel:+13172000732',
 
   address: {
-    // Service-area business — no public street address yet (TODO if/when one exists).
+    // Service-area business, no public street address yet (TODO if/when one exists).
     street: '',
     city: 'Anderson',
     region: 'IN',
@@ -35,7 +35,7 @@ export const site = {
   },
 
   // Cities / counties served (also drives the Service Areas pages).
-  serviceArea: 'Anderson, Indiana and the surrounding Madison County area',
+  serviceArea: 'Anderson, Indiana and surrounding counties',
 
   // --- Hours ---------------------------------------------------------------
   // TODO: confirm. Care is often 24/7; office/phone hours may differ.
@@ -94,6 +94,7 @@ export const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Services', href: '/services' },
+  { label: 'Veterans', href: '/veterans' },
   { label: 'Service Areas', href: '/service-areas' },
   { label: 'Why Choose Us', href: '/why-choose-us' },
   { label: 'FAQ', href: '/faq' },

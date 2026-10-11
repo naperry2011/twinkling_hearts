@@ -29,23 +29,21 @@ npm run preview  # preview the production build
 
 Search the codebase for `TODO` to find every placeholder. All live in `src/config/site.ts`:
 
-1. **Phone** — set `phone` and `phoneHref` (E.164, e.g. `tel:+15551234567`).
-2. **Address / service area** — set `address.*` and `serviceArea`. For a service-area
+1. **Address / service area** — set `address.*` and `serviceArea`. For a service-area
    business with no public office, leave `street` blank.
-3. **Hours** — confirm `hours.display`, `hours.office`, and `hours.schema`.
-4. **License** — set `license` to your state registration/license number (or set to `''` to hide it).
-5. **Email** — `email` (a branded address like `care@twinklingheart.org` reads more professional).
-6. **Social links** — replace the placeholder Facebook/Instagram/X URLs.
-7. **Contact form key** — create a free key at https://web3forms.com and set `web3formsKey`.
+2. **Hours** — confirm `hours.display`, `hours.office`, and `hours.schema`.
+3. **License** — set `license` to your state registration/license number (or set to `''` to hide it).
+4. **Social links** — replace the placeholder Facebook/Instagram/X URLs.
+5. **Contact form key** — create a free key at https://web3forms.com and set `web3formsKey`.
    Submissions are emailed to the inbox tied to that key. Test it after deploying.
-8. **Map** — set `mapEmbedSrc` to your real city/region (Google Maps → Share → Embed).
-9. **Service areas** — edit `src/content/areas/*.json` with real cities; add one file per city.
+6. **Map** — set `mapEmbedSrc` to your real city/region (Google Maps → Share → Embed).
+7. **Service areas** — edit `src/content/areas/*.json` with real cities; add one file per city.
    Remove the `"placeholder": true` flag once real.
-10. **Testimonials** — replace `src/content/testimonials.json` with real, permissioned reviews
-    and remove the "illustrative samples" note in `src/pages/index.astro`.
-11. **Photos** — three source photos are low-resolution (~612px wide). For a crisp hero,
-    supply higher-resolution images and replace files in `src/assets/images/`.
-    Also note `team.jpeg` has letterbox bars; a clean crop is recommended.
+8. **Testimonials** — replace `src/content/testimonials.json` with real, permissioned reviews
+   and remove the "illustrative samples" note in `src/pages/index.astro`.
+9. **Photos** — three source photos are low-resolution (~612px wide). For a crisp hero,
+   supply higher-resolution images and replace files in `src/assets/images/`.
+   Also note `team.jpeg` has letterbox bars; a clean crop is recommended.
 
 ## Deploy to Vercel
 

@@ -35,7 +35,7 @@ const isActive = (href: string) =>
   <!-- Main bar -->
   <div class="border-b border-sage-100 bg-cream/90 backdrop-blur-md">
     <div class="container-prose flex items-center justify-between gap-4 py-2.5">
-      <a href="/" class="flex items-center rounded-lg" aria-label={`${site.name} — home`}>
+      <a href="/" class="flex items-center rounded-lg" aria-label={`${site.name}, home`}>
         <Image
           src={logoLockup}
           alt={site.name}
@@ -48,13 +48,13 @@ const isActive = (href: string) =>
       </a>
 
       <!-- Desktop nav -->
-      <nav class="hidden items-center gap-1 lg:flex" aria-label="Primary">
+      <nav class="hidden items-center gap-1 xl:flex" aria-label="Primary">
         {navLinks.map((link) => (
           <a
             href={link.href}
             aria-current={isActive(link.href) ? 'page' : undefined}
             class:list={[
-              'group relative px-3 py-2 text-[0.8rem] font-semibold uppercase tracking-[0.12em] transition-colors',
+              'group relative whitespace-nowrap px-3 py-2 text-[0.8rem] font-semibold uppercase tracking-[0.12em] transition-colors',
               isActive(link.href) ? 'text-sage-900' : 'text-ink-soft hover:text-sage-800',
             ]}
           >
@@ -70,10 +70,10 @@ const isActive = (href: string) =>
         ))}
       </nav>
 
-      <div class="hidden lg:block">
+      <div class="hidden xl:block">
         <a
           href="/contact"
-          class="bg-foil inline-flex min-h-[46px] items-center gap-2 rounded-full px-5 font-semibold text-ink shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-lift"
+          class="bg-foil inline-flex min-h-[46px] items-center gap-2 whitespace-nowrap rounded-full px-5 font-semibold text-ink shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-lift"
         >
           <Icon name="heart" size={18} />
           Free Assessment
@@ -84,7 +84,7 @@ const isActive = (href: string) =>
       <button
         type="button"
         id="menu-toggle"
-        class="inline-flex h-11 w-11 items-center justify-center rounded-lg text-sage-900 hover:bg-sage-100 lg:hidden"
+        class="inline-flex h-11 w-11 items-center justify-center rounded-lg text-sage-900 hover:bg-sage-100 xl:hidden"
         aria-expanded="false"
         aria-controls="mobile-menu"
         aria-label="Open menu"
@@ -94,7 +94,7 @@ const isActive = (href: string) =>
     </div>
 
     <!-- Mobile menu -->
-    <div id="mobile-menu" hidden class="border-t border-sage-100 bg-cream lg:hidden">
+    <div id="mobile-menu" hidden class="border-t border-sage-100 bg-cream xl:hidden">
       <nav class="container-prose flex flex-col gap-1 py-4" aria-label="Mobile">
         {navLinks.map((link) => (
           <a

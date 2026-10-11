@@ -4,7 +4,7 @@
     "category": "Getting Started",
     "order": 1,
     "question": "What is non-medical in-home care?",
-    "answer": "Non-medical in-home care helps seniors with everyday living — bathing, dressing, meals, light housekeeping, companionship, medication reminders, and getting around safely. Our caregivers do not provide skilled medical or nursing services; instead, they offer the dependable, compassionate day-to-day support that helps your loved one stay safe and independent at home."
+    "answer": "Non-medical in-home care helps seniors with everyday living: bathing, dressing, meals, light housekeeping, companionship, medication reminders, and getting around safely. Our caregivers do not provide skilled medical or nursing services; instead, they offer the dependable, compassionate day-to-day support that helps your loved one stay safe and independent at home."
   },
   {
     "id": "how-do-we-start",
@@ -39,14 +39,14 @@
     "category": "Caregivers & Safety",
     "order": 6,
     "question": "Will my loved one have the same caregiver each time?",
-    "answer": "Whenever possible, yes. Consistency builds trust and comfort, so we work hard to match your loved one with a caregiver who fits their personality and needs — and to keep that relationship steady. If a caregiver is ever unavailable, we ensure a familiar, qualified backup steps in."
+    "answer": "Whenever possible, yes. Consistency builds trust and comfort, so we work hard to match your loved one with a caregiver who fits their personality and needs, and to keep that relationship steady. If a caregiver is ever unavailable, we ensure a familiar, qualified backup steps in."
   },
   {
     "id": "what-hours",
     "category": "Services & Scheduling",
     "order": 7,
     "question": "What hours and schedules do you offer?",
-    "answer": "We offer flexible scheduling to fit your family — from a few hours a week to daily visits, overnight care, and around-the-clock support. As needs change, your care plan can change with them. Just let us know what works, and we will build a schedule around it."
+    "answer": "We offer flexible scheduling to fit your family, from a few hours a week to daily visits, overnight care, and around-the-clock support. As needs change, your care plan can change with them. Just let us know what works, and we will build a schedule around it."
   },
   {
     "id": "can-we-change-plan",
@@ -60,7 +60,7 @@
     "category": "Cost & Payment",
     "order": 9,
     "question": "How much does in-home care cost?",
-    "answer": "Cost depends on the type of care and number of hours your loved one needs, so we provide a clear, personalized quote after the free assessment — with no surprises. We will always be transparent about pricing and help you find a plan that fits your family's budget."
+    "answer": "Cost depends on the type of care and number of hours your loved one needs, so we provide a clear, personalized quote after the free assessment, with no surprises. We will always be transparent about pricing and help you find a plan that fits your family's budget."
   },
   {
     "id": "payment-options",
