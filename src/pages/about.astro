@@ -6,14 +6,13 @@ import PhotoFrame from '@/components/PhotoFrame.astro';
 import DottedDivider from '@/components/DottedDivider.astro';
 import Icon from '@/components/Icon.astro';
 import { site } from '@/config/site';
-import teamImg from '@/assets/images/team.jpeg';
 import breakfastImg from '@/assets/images/breakfast.jpeg';
 
 const values = [
   { icon: 'heart', title: 'Compassion', text: 'We lead with kindness. Every interaction is rooted in genuine care for the person in front of us.' },
   { icon: 'shield', title: 'Dignity', text: 'We honor each person’s independence, privacy, and worth, always treating them as we would our own family.' },
   { icon: 'check', title: 'Trust', text: 'We do what we say, show up when we promise, and communicate openly so families never have to wonder.' },
-  { icon: 'users', title: 'Connection', text: 'Care is personal. We build real relationships that bring comfort, companionship, and joy.' },
+  { icon: 'users', title: 'Connection', text: 'Care is personal. We build real relationships that bring comfort, companion care, and joy.' },
 ] as const;
 
 const credentials = [
@@ -86,38 +85,8 @@ const credentials = [
     </div>
   </section>
 
-  <!-- team -->
-  <section class="container-prose py-16 md:py-24">
-    <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
-      <div class="order-2 lg:order-1">
-        <PhotoFrame
-          src={teamImg}
-          alt="The Twinkling Hearts In Home Care team wearing branded shirts, seated together"
-          shape="rounded"
-          tilt="right"
-          widths={[360, 600]}
-          sizes="(min-width: 1024px) 24rem, 80vw"
-          class="max-w-sm"
-        />
-      </div>
-      <div class="order-1 lg:order-2">
-        <SectionHeading eyebrow="Meet the Team" title="Caregivers chosen for skill and heart" />
-        <p class="mt-5 text-lg leading-relaxed text-ink-soft">
-          Our caregivers are the heart of Twinkling Hearts. Each one is carefully
-          screened, background-checked, and selected not just for experience, but
-          for warmth, patience, and genuine compassion. We hire people we would
-          trust with our own parents, and we support them with ongoing training
-          so your loved one always receives dependable, caring help.
-        </p>
-        <p class="mt-4 text-sm text-taupe-600">
-          Team photo shown; individual caregiver bios will be added soon.
-        </p>
-      </div>
-    </div>
-  </section>
-
   <!-- credentials -->
-  <section class="wash-sage grain relative py-16 md:py-24">
+  <section class="py-16 md:py-24">
     <div class="container-prose">
       <SectionHeading eyebrow="Trust & Credentials" title="Your family’s safety and peace of mind" align="center" />
       <ul class="mx-auto mt-10 grid max-w-3xl gap-4 sm:grid-cols-2">

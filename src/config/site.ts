@@ -15,7 +15,7 @@ export const site = {
   tagline: 'Care You Can Trust, Hearts That Understand.',
   miniTagline: 'Compassion is at the heart of our care.',
   description:
-    'Twinkling Hearts In Home Care provides compassionate, dependable non-medical in-home senior care: personal care, companionship, medication reminders, light housekeeping, and respite for families.',
+    'Twinkling Hearts In Home Care provides compassionate, dependable non-medical in-home senior care: personal care, companion care, medication reminders, light housekeeping, and respite for families.',
 
   url: 'https://twinklingheart.org',
 
